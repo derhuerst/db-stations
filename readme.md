@@ -26,3 +26,8 @@ todo
 ## Contributing
 
 If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/derhuerst/db-stations/issues).
+
+
+## Data License
+
+The data in [`data.csv`](data.csv) [has originally been published](http://data.deutschebahn.com/dataset/data-stationsdaten) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) by *Deutsche Bahn (DB)*.
