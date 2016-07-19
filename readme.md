@@ -30,4 +30,4 @@ If you **have a question**, **found a bug** or want to **propose a feature**, ha
 
 ## Data License
 
-The data in [`data.csv`](data.csv) [has originally been published](http://data.deutschebahn.com/dataset/data-stationsdaten) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) by *Deutsche Bahn (DB)*.
+The generated data in [`data.ndjson`](data.ndjson) [has originally been published](http://data.deutschebahn.com/dataset/data-stationsdaten) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) by *Deutsche Bahn (DB)*.

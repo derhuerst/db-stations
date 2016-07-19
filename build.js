@@ -1,12 +1,17 @@
 'use strict'
 
 const pipe = require('multipipe')
-const fs = require('fs')
+const got = require('got')
 const csv = require('csv-parse')
 const map = require('through2-map')
 const ndjson = require('ndjson')
+const fs = require('fs')
 
 
+
+const url = `\
+http://download-data.deutschebahn.com\
+/static/datasets/stationsdaten/DBSuS-Uebersicht_Bahnhoefe-Stand2016-03.csv`
 
 const states = {
 	  'Baden-Württemberg': 'BW'
@@ -52,7 +57,7 @@ const parse = (s) => {
 
 
 pipe(
-	  fs.createReadStream('data.csv')
+	  got.stream(url)
 	, csv({delimiter: ';', columns: true})
 	, map.obj(parse)
 	, ndjson.stringify()
