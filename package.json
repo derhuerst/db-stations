@@ -1,0 +1,16 @@
+{
+	"name":              "db-stations",
+	"description":       "A list of DB stations.",
+	"version":           "0.1.0",
+	"main":              "index.js",
+	"files":             ["index.js", "data.ndjson"],
+	"keywords": [
+		"db", "deutsche bahn", "german railway", "public transport",
+		"stations", "open data", "json"
+	],
+	"author":            "Jannis R <mail@jannisr.de>",
+	"homepage":          "https://github.com/derhuerst/db-stations",
+	"repository":        "derhuerst/db-stations",
+	"bugs":              "https://github.com/derhuerst/db-stations/issues",
+	"license":           "ISC"
+}
