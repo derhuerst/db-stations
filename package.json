@@ -12,5 +12,15 @@
 	"homepage":          "https://github.com/derhuerst/db-stations",
 	"repository":        "derhuerst/db-stations",
 	"bugs":              "https://github.com/derhuerst/db-stations/issues",
-	"license":           "ISC"
+	"license":           "ISC",
+	"devDependencies": {
+		"multipipe": "^0.3.1",
+		"csv-parse": "^1.1.4",
+		"through2-map": "^2",
+		"ndjson": "^1.4.3"
+	},
+	"scripts": {
+		"build": "rm data.ndjson && node build.js",
+		"prepublish": "npm run build"
+	}
 }
