@@ -13,12 +13,14 @@
 	"repository":        "derhuerst/db-stations",
 	"bugs":              "https://github.com/derhuerst/db-stations/issues",
 	"license":           "ISC",
+	"dependencies": {
+		"multipipe": "^0.3.1",
+		"ndjson": "^1.4.3"
+	},
 	"devDependencies": {
 		"got": "^6.3",
-		"multipipe": "^0.3.1",
 		"csv-parse": "^1.1.4",
 		"through2-map": "^2",
-		"ndjson": "^1.4.3",
 		"tape-catch": "^1.0.6",
 		"tap-min": "^1.1"
 	},
