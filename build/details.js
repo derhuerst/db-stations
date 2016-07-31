@@ -1,17 +1,13 @@
 'use strict'
 
 const pipe = require('multipipe')
-const got = require('got')
+const fs = require('fs')
+const path = require('path')
 const csv = require('csv-parse')
 const map = require('through2-map')
-const ndjson = require('ndjson')
-const fs = require('fs')
+const reduce = require('through2-reduce')
 
 
-
-const url = `\
-http://download-data.deutschebahn.com\
-/static/datasets/stationsdaten/DBSuS-Uebersicht_Bahnhoefe-Stand2016-03.csv`
 
 const states = {
 	  'Baden-Württemberg': 'BW'
@@ -34,8 +30,7 @@ const states = {
 
 // todo: what is `Kat. Vst`?
 const keys = {
-	  id: (s) => +s['Bf. Nr.']
-	, ds100: (s) => s['Bf DS 100 Abk.']
+	  ds100: (s) => s['Bf DS 100 Abk.']
 	, name: (s) => s['Station']
 	, agency: (s) => s['Verkehrsverb.']
 	, street: (s) => s['Straße']
@@ -54,12 +49,16 @@ const parse = (s) => {
 	return r
 }
 
+const collect = (all = {}, s) => {
+	all[s.ds100] = s
+	return all
+}
 
 
-pipe(
-	  got.stream(url)
+
+module.exports = pipe(
+	  fs.createReadStream(path.join(__dirname, 'details.csv'))
 	, csv({delimiter: ';', columns: true})
 	, map.obj(parse)
-	, ndjson.stringify()
-	, fs.createWriteStream('data.ndjson')
+	, reduce({objectMode: true}, collect)
 )

@@ -18,7 +18,6 @@
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
-		"got": "^6.3",
 		"csv-parse": "^1.1.4",
 		"through2-map": "^2",
 		"tape": "^4.6",
@@ -27,7 +26,10 @@
 		"is-stream": "^1.1"
 	},
 	"scripts": {
-		"build": "node build.js",
+		"download": "curl -o build/details.csv 'http://download-data.deutschebahn.com/static/datasets/stationsdaten/DBSuS-Uebersicht_Bahnhoefe-Stand2016-03.csv' && curl -o build/stations.csv 'http://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2016_01_alle.csv'",
+		"convert": "node build/index.js",
+		"cleanup": "rm build/*csv",
+		"build": "npm run download && npm run convert && npm run cleanup",
 		"test": "node test.js | tap-min",
 		"prepublish": "npm run build && npm test"
 	}
