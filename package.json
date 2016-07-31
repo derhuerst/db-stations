@@ -18,8 +18,9 @@
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
-		"csv-parse": "^1.1.4",
 		"through2-map": "^2",
+		"csv-parse": "^1.1.7",
+		"through2-reduce": "^1.1.1",
 		"tape": "^4.6",
 		"tape-catch": "^1.0.6",
 		"tap-min": "^1.1",
