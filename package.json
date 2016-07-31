@@ -26,7 +26,7 @@
 		"is-stream": "^1.1"
 	},
 	"scripts": {
-		"download": "curl -o build/details.csv 'http://download-data.deutschebahn.com/static/datasets/stationsdaten/DBSuS-Uebersicht_Bahnhoefe-Stand2016-03.csv' && curl -o build/stations.csv 'http://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2016_01_alle.csv'",
+		"download": "curl -s -o build/details.csv 'http://download-data.deutschebahn.com/static/datasets/stationsdaten/DBSuS-Uebersicht_Bahnhoefe-Stand2016-03.csv' && curl -s -o build/stations.csv 'http://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2016_01_alle.csv'",
 		"convert": "node build/index.js",
 		"cleanup": "rm build/*csv",
 		"build": "npm run download && npm run convert && npm run cleanup",

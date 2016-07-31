@@ -30,7 +30,7 @@ const states = {
 
 // todo: what is `Kat. Vst`?
 const keys = {
-	  ds100: (s) => s['Bf DS 100 Abk.']
+	  ds100: (s) => s['Bf DS 100 Abk.'].toUpperCase()
 	, name: (s) => s['Station']
 	, agency: (s) => s['Verkehrsverb.']
 	, street: (s) => s['Straße']
@@ -49,7 +49,7 @@ const parse = (s) => {
 	return r
 }
 
-const collect = (all = {}, s) => {
+const collect = (all, s) => {
 	all[s.ds100] = s
 	return all
 }
@@ -60,5 +60,5 @@ module.exports = pipe(
 	  fs.createReadStream(path.join(__dirname, 'details.csv'))
 	, csv({delimiter: ';', columns: true})
 	, map.obj(parse)
-	, reduce({objectMode: true}, collect)
+	, reduce.obj(collect, {})
 )

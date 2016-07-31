@@ -11,7 +11,7 @@ const map = require('through2-map')
 // todo: what is `Kat. Vst`?
 const keys = {
 	  id: (s) => +s['EVA_NR']
-	, ds100: (s) => s['DS100']
+	, ds100: (s) => s['DS100'].toUpperCase()
 	, name: (s) => s['NAME']
 	, latitude: (s) => +s['BREITE']
 	, longitude: (s) => +s['LAENGE']
