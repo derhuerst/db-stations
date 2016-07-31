@@ -8,14 +8,11 @@ const stations = require('./index')
 
 
 const isJungfernheide = (s) =>
-	   s.id === 3067
+	   s.id === 8011167
 	&& s.ds100 === 'BJUF'
-	&& s.name === 'Jungfernheide'
-	&& s.agency === 'VBB'
-	&& s.street === 'Max-Dohrn-Str.5'
-	&& s.zip === 10589
-	&& s.city === 'Berlin'
-	&& s.state === 'BE'
+	&& s.name === 'Berlin Jungfernheide'
+	&& s.latitude === 52.530276
+	&& s.longitude === 13.299437
 
 
 
