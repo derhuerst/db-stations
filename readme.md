@@ -1,6 +1,8 @@
 # db-stations 🚏
 
-A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from [open data](http://data.deutschebahn.com/dataset/data-stationsdaten).
+A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from open data.
+
+Unfortunately, Deutsche Bahn published two datasets, which neither cover the same stations nor provide the same attributes; [the build script](build/index.js) tries to merge them.
 
 [![npm version](https://img.shields.io/npm/v/db-stations.svg)](https://www.npmjs.com/package/db-stations)
 [![build status](https://img.shields.io/travis/derhuerst/db-stations.svg)](https://travis-ci.org/derhuerst/db-stations)
@@ -28,6 +30,34 @@ stations()
 .on('error', console.error)
 ```
 
+```js
+{
+	id: 8000001, // EVA number
+	ds100: 'KA', // DS100 code
+	name: 'Aachen Hbf',
+	latitude: 50.7678,
+	longitude: 6.091499,
+	agency: 'AVV.',
+	street: 'Bahnhofplatz 2a',
+	zip: 52064,
+	city: 'Aachen',
+	state: 'NW'
+}
+{
+	id: 8070704, // EVA number
+	ds100: 'KASZ', // DS100 code
+	name: 'Aachen Schanz',
+	latitude: 50.769862,
+	longitude: 6.07384,
+	agency: 'AVV.',
+	street: 'Vaalserstraße 15',
+	zip: 52064,
+	city: 'Aachen',
+	state: 'NW'
+}
+// and a lot more…
+```
+
 
 ## Contributing
 
@@ -36,4 +66,4 @@ If you **have a question**, **found a bug** or want to **propose a feature**, ha
 
 ## Data License
 
-The generated data in [`data.ndjson`](data.ndjson) [has originally been published](http://data.deutschebahn.com/dataset/data-stationsdaten) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) by *Deutsche Bahn (DB)*.
+The generated data in [`data.ndjson`](data.ndjson) has originally [been](http://data.deutschebahn.com/dataset/data-stationsdaten) [published](http://data.deutschebahn.com/dataset/data-haltestellen) under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) by *Deutsche Bahn (DB)*.
