@@ -31,6 +31,7 @@ const states = {
 // todo: what is `Kat. Vst`?
 const keys = {
 	  ds100: (s) => s['Bf DS 100 Abk.'].toUpperCase()
+	, nr: (s) => +s['Bf. Nr.']
 	, name: (s) => s['Station']
 	, agency: (s) => s['Verkehrsverb.']
 	, street: (s) => s['Straße']

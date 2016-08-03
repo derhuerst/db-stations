@@ -34,6 +34,7 @@ stations()
 {
 	id: 8000001, // EVA number
 	ds100: 'KA', // DS100 code
+	nr: 1, // DB internal
 	name: 'Aachen Hbf',
 	latitude: 50.7678,
 	longitude: 6.091499,
@@ -46,6 +47,7 @@ stations()
 {
 	id: 8070704, // EVA number
 	ds100: 'KASZ', // DS100 code
+	nr: 7205, // DB internal
 	name: 'Aachen Schanz',
 	latitude: 50.769862,
 	longitude: 6.07384,

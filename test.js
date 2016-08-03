@@ -9,6 +9,7 @@ const stations = require('./index')
 
 const isJungfernheide = (s) =>
 	   s.id === 8011167
+	&& s.nr === 3067
 	&& s.ds100 === 'BJUF'
 	&& s.name === 'Berlin Jungfernheide'
 	&& s.latitude === 52.530276
