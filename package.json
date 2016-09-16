@@ -20,6 +20,7 @@
 	"devDependencies": {
 		"through2-map": "^2",
 		"csv-parser": "^1.11",
+		"non-ascii": "^1",
 		"through2-reduce": "^1.1.1",
 		"tape": "^4.6",
 		"tape-catch": "^1.0.6",
