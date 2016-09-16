@@ -3,8 +3,9 @@
 const pipe = require('multipipe')
 const fs = require('fs')
 const path = require('path')
-const csv = require('csv-parse')
+const csv = require('csv-parser')
 const map = require('through2-map')
+const cleanKeys = require('./clean-keys')
 
 
 
@@ -27,6 +28,7 @@ const parse = (s) => {
 
 module.exports = pipe(
 	  fs.createReadStream(path.join(__dirname, 'stations.csv'))
-	, csv({delimiter: ';', columns: true})
+	, csv({separator: ';'})
+	, map.obj(cleanKeys)
 	, map.obj(parse)
 )
