@@ -1,7 +1,7 @@
 {
 	"name":              "db-stations",
 	"description":       "A list of DB stations.",
-	"version":           "0.3.0",
+	"version":           "0.4.0",
 	"main":              "index.js",
 	"files":             ["index.js", "data.ndjson"],
 	"keywords": [

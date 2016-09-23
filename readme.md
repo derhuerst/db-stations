@@ -40,7 +40,7 @@ stations()
 	longitude: 6.091499,
 	agency: 'AVV.',
 	street: 'Bahnhofplatz 2a',
-	zip: 52064,
+	zip: '52064',
 	city: 'Aachen',
 	state: 'NW'
 }
@@ -53,7 +53,7 @@ stations()
 	longitude: 6.07384,
 	agency: 'AVV.',
 	street: 'Vaalserstraße 15',
-	zip: 52064,
+	zip: '52064',
 	city: 'Aachen',
 	state: 'NW'
 }
