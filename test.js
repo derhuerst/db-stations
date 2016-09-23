@@ -12,6 +12,7 @@ const isJungfernheide = (s) =>
 	&& s.nr === 3067
 	&& s.ds100 === 'BJUF'
 	&& s.name === 'Berlin Jungfernheide'
+	&& s.zip === '10589'
 	&& s.latitude === 52.530276
 	&& s.longitude === 13.299437
 
