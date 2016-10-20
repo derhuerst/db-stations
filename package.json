@@ -14,7 +14,7 @@
 	"bugs":              "https://github.com/derhuerst/db-stations/issues",
 	"license":           "ISC",
 	"dependencies": {
-		"multipipe": "^0.3.1",
+		"multipipe": "^1.0.1",
 		"ndjson": "^1.4.3"
 	},
 	"devDependencies": {
