@@ -9,6 +9,7 @@ Unfortunately, Deutsche Bahn published two datasets, which neither cover the sam
 [![dependency status](https://img.shields.io/david/derhuerst/db-stations.svg)](https://david-dm.org/derhuerst/db-stations)
 [![dev dependency status](https://img.shields.io/david/dev/derhuerst/db-stations.svg)](https://david-dm.org/derhuerst/db-stations#info=devDependencies)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/db-stations.svg)
+[![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 
 
 ## Installing

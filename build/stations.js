@@ -37,7 +37,7 @@ const download = (token) => {
 	return from.obj((_, cb) => {
 		if (offset >= total) return cb(null, null)
 
-		const size = Math.min(maxSize, total - offset)
+		const size = Math.min(maxSize, total - offset - 1)
 		offset += size
 
 		request(token, offset, size)
