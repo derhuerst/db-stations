@@ -3,7 +3,7 @@
 	"description":       "A list of DB stations.",
 	"version":           "0.4.0",
 	"main":              "index.js",
-	"files":             ["index.js", "data.ndjson"],
+	"files":             ["index.js", "data.ndjson", "full.ndjson"],
 	"keywords": [
 		"db", "deutsche bahn", "german railway", "public transport",
 		"stations", "open data", "json"
@@ -20,7 +20,10 @@
 	"devDependencies": {
 		"fetch-ponyfill": "^4.0.0",
 		"from2": "2.3.0",
+		"multipipe": "^1.0.2",
+		"ndjson": "^1.5.0",
 		"p-throttle": "^1.1.0",
+		"through2": "^2.0.3",
 		"tape": "^4.6",
 		"tape-catch": "^1.0.6",
 		"tap-min": "^1.1",
