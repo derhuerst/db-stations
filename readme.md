@@ -21,7 +21,7 @@ npm install db-stations
 
 ## Usage
 
-`stations()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode).
+`stations()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
 
 ```js
 const stations = require('db-stations')
@@ -33,32 +33,98 @@ stations()
 
 ```js
 {
-	id: 8000001, // EVA number
-	ds100: 'KA', // DS100 code
-	nr: 1, // DB internal
-	name: 'Aachen Hbf',
-	latitude: 50.7678,
-	longitude: 6.091499,
-	agency: 'AVV.',
-	street: 'Bahnhofplatz 2a',
-	zip: '52064',
-	city: 'Aachen',
-	state: 'NW'
-}
-{
-	id: 8070704, // EVA number
-	ds100: 'KASZ', // DS100 code
-	nr: 7205, // DB internal
-	name: 'Aachen Schanz',
-	latitude: 50.769862,
-	longitude: 6.07384,
-	agency: 'AVV.',
-	street: 'Vaalserstraße 15',
-	zip: '52064',
-	city: 'Aachen',
-	state: 'NW'
+	type: 'station',
+	id: '8000007', // EVA number
+	ds100: 'FALZ', // DS100 code
+	nr: 133, // DB internal
+	name: 'Alzey',
+	coordinates: {
+		latitude: 49.7502,
+		longitude: 8.109749
+	},
+	operator: {
+		type: 'operator',
+		id: 'zpnv-sud',
+		name: 'Zweckverband Schienenpersonennahverkehr Rheinland-Pfalz Süd'
+	},
+	address: {
+		city: 'Alzey',
+		zipcode: '55232',
+		street: 'Bahnhofstr. 30'
+	}
 }
 // and a lot more…
+```
+
+---
+
+`full.ndjson` contains a [newline-delimited JSON](#todo) list of stations, with every information available:
+
+```js
+{
+	type: 'station',
+	id: 8000007,
+	ds100: 'FALZ',
+	nr: 133,
+	name: 'Alzey',
+	coordinates: {
+		latitude: 8.109749,
+		longitude: 49.7502
+	},
+	operator: {
+		type: 'operator',
+		id: 'zpnv-sud',
+		name: 'Zweckverband Schienenpersonennahverkehr Rheinland-Pfalz Süd'
+	},
+	address: {
+		city: 'Alzey',
+		zipcode: '55232',
+		street: 'Bahnhofstr. 30'
+	},
+	category: 3,
+	hasParking: true,
+	hasBicycleParking: true,
+	hasLocalPublicTransport: true,
+	hasPublicFacilities: false,
+	hasLockerSystem: false,
+	hasTaxiRank: true,
+	hasTravelNecessities: false,
+	hasSteplessAccess: 'partial',
+	hasMobilityService: 'no',
+	federalState: 'Rheinland-Pfalz',
+	regionalbereich: {
+		number: 5,
+		name: 'RB Mitte',
+		shortName: 'RB M'
+	},
+	timeTableOffice: {
+		email: 'DBS.Fahrplan.RhldPfalzSaarland@deutschebahn.com',
+		name: 'Bahnhofsmanagement Mainz'
+	},
+	szentrale: {
+		number: 24,
+		publicPhoneNumber: '06131/151055',
+		name: 'Mainz Hbf'
+	},
+	stationManagement: {
+		number: 184,
+		name: 'Mainz'
+	},
+	ril100Identifiers: [
+		{
+			rilIdentifier: 'FALZ',
+			isMain: true,
+			hasSteamPermission: true,
+			geographicCoordinates: {
+				type: 'Point',
+				coordinates: [
+					8.109684725,
+					49.750267695
+				]
+			}
+		}
+	]
+}
 ```
 
 
