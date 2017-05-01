@@ -24,7 +24,6 @@ const showError = (err) => {
 
 const src = pipe(
 	stations(TOKEN),
-	ndjson.parse(),
 	through.obj(function (stations, _, cb) {
 		for (let s of stations) this.push(s)
 		cb()

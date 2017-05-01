@@ -4,13 +4,14 @@ const through = require('through2')
 const slugg = require('slugg')
 
 const parseCoordinates = require('./parse').coordinates
+const parseDS100 = require('./parse').ds100
 
 const simplified = () => {
 	return through.obj((data, _, cb) => {
 		cb(null, {
 			type: 'station',
 			id: data.evaNumbers[0] ? data.evaNumbers[0].number : null,
-			ds100: null, // todo
+			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,
 			coordinates: parseCoordinates(data),

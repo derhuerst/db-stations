@@ -12,4 +12,11 @@ const coordinates = (data) => {
 	} : null
 }
 
-module.exports = {coordinates}
+const ds100 = (data) => {
+	return (
+		data.ril100Identifiers
+		&& data.ril100Identifiers[0]
+	) ? data.ril100Identifiers[0].rilIdentifier : null
+}
+
+module.exports = {coordinates, ds100}
