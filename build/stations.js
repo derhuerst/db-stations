@@ -26,7 +26,7 @@ const request = throttle((token, offset, size) => {
 		}
 		return res.json()
 	})
-}, 10, 10 * 60 * 1000)
+}, 10, 61 * 1000) // 10 reqs/min + cushion
 
 const maxSize = 100
 
@@ -35,19 +35,19 @@ const download = (token) => {
 	let total = Infinity
 
 	return from.obj((_, cb) => {
+		console.error(offset, '/', total)
 		if (offset >= total) return cb(null, null)
-
-		const size = Math.min(maxSize, total - offset - 1)
-		offset += size
+		const size = Math.min(maxSize, total - offset)
 
 		request(token, offset, size)
 		.then((data) => {
 			total = data.total
 
-			// for (let s of data.result) cb(null, s)
 			cb(null, data.result)
 		})
 		.catch(cb)
+
+		offset += size
 	})
 }
 
