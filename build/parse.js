@@ -7,8 +7,8 @@ const coordinates = (data) => {
 		&& data.evaNumbers[0].geographicCoordinates
 		&& data.evaNumbers[0].geographicCoordinates.coordinates
 	) ? {
-		latitude: data.evaNumbers[0].geographicCoordinates.coordinates[0],
-		longitude: data.evaNumbers[0].geographicCoordinates.coordinates[1]
+		latitude: data.evaNumbers[0].geographicCoordinates.coordinates[1],
+		longitude: data.evaNumbers[0].geographicCoordinates.coordinates[0]
 	} : null
 }
 

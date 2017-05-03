@@ -63,7 +63,7 @@ stations()
 ```js
 {
 	type: 'station',
-	id: 8000007,
+	id: '8000007',
 	ds100: 'FALZ',
 	nr: 133,
 	name: 'Alzey',
