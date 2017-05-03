@@ -1,18 +1,10 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
-const ndjson = require('ndjson')
-const test = require('tape-catch')
+const test = require('tape')
 const isStream = require('is-stream')
 const isRoughlyEqual = require('is-roughly-equal')
 
-const stations = require('./index')
-
-const full = () => {
-	return fs.createReadStream(path.join(__dirname, 'full.ndjson'))
-	.pipe(ndjson.parse())
-}
+const stations = require('.')
 
 
 
@@ -83,7 +75,7 @@ test('data.ndjson contains Berlin Jungfernheide', (t) => {
 })
 
 test('full.ndjson contains valid full stations', (t) => {
-	stations()
+	stations.full()
 	.on('error', t.ifError)
 	.on('data', (s) => {
 		assertIsValidStation(t, s)
@@ -112,7 +104,7 @@ test('full.ndjson contains valid full stations', (t) => {
 })
 
 test('full.ndjson contains Berlin Jungfernheide', (t) => {
-	full()
+	stations.full()
 	.on('error', t.ifError)
 	.on('data', (s) => {
 		if (s.id === '8089100') {

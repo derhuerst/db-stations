@@ -58,7 +58,13 @@ stations()
 
 ---
 
-`full.ndjson` contains a [newline-delimited JSON](#todo) list of stations, with every information available:
+`stations.full()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects with more information.
+
+```js
+stations.full()
+.on('data', console.log)
+.on('error', console.error)
+```
 
 ```js
 {
