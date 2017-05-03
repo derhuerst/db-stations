@@ -25,7 +25,11 @@ const showError = (err) => {
 const src = pipe(
 	stations(TOKEN),
 	through.obj(function (stations, _, cb) {
-		for (let s of stations) this.push(s)
+		for (let s of stations) {
+			const id = s.evaNumbers[0] ? s.evaNumbers[0].number + '' : null
+			if (id) this.push(s)
+			else console.error(`${s.name} (nr ${s.number}) has no IBNR`)
+		}
 		cb()
 	}),
 	showError
