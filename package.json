@@ -1,7 +1,7 @@
 {
 	"name":              "db-stations",
 	"description":       "A list of DB stations.",
-	"version":           "0.4.0",
+	"version":           "1.0.0",
 	"main":              "index.js",
 	"files":             ["index.js", "data.ndjson", "full.ndjson"],
 	"keywords": [
@@ -22,15 +22,12 @@
 		"from2": "2.3.0",
 		"lodash": "^4.7.14",
 		"multipipe": "^1.0.2",
-		"ndjson": "^1.5.0",
 		"p-throttle": "^1.1.0",
 		"slugg": "^1.2.0",
 		"stream-filter": "^2.1.0",
 		"through2": "^2.0.3",
 		"tape": "^4.6.3",
-		"tape-catch": "^1.0.6",
 		"tap-min": "^1.2.1",
-		"is-stream": "^1.1",
 		"is-roughly-equal": "^0.1.0"
 	},
 	"scripts": {

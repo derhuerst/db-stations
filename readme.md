@@ -1,13 +1,11 @@
 # db-stations 🚏
 
-A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from open data.
+A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from [open data](https://developer.deutschebahn.com/store/apis/info?name=StaDa-Station_Data&version=v2&provider=DBOpenData).
 
-Unfortunately, Deutsche Bahn published two datasets, which neither cover the same stations nor provide the same attributes; [the build script](build/index.js) tries to merge them.
+*Warning*: This module does not contain stations without an [IBNR](https://de.wikipedia.org/wiki/Internationale_Bahnhofsnummer).
 
 [![npm version](https://img.shields.io/npm/v/db-stations.svg)](https://www.npmjs.com/package/db-stations)
 [![build status](https://img.shields.io/travis/derhuerst/db-stations.svg)](https://travis-ci.org/derhuerst/db-stations)
-[![dependency status](https://img.shields.io/david/derhuerst/db-stations.svg)](https://david-dm.org/derhuerst/db-stations)
-[![dev dependency status](https://img.shields.io/david/dev/derhuerst/db-stations.svg)](https://david-dm.org/derhuerst/db-stations#info=devDependencies)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/db-stations.svg)
 [![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 

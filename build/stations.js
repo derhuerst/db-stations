@@ -35,7 +35,7 @@ const download = (token) => {
 	let total = Infinity
 
 	return from.obj((_, cb) => {
-		console.error(offset, '/', total)
+		console.error(`${offset} of ${total} total`)
 		if (offset >= total) return cb(null, null)
 		const size = Math.min(maxSize, total - offset)
 
