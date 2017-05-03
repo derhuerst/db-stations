@@ -8,9 +8,16 @@ const parseDS100 = require('./parse').ds100
 
 const simplified = () => {
 	return through.obj((data, _, cb) => {
+		const id = data.evaNumbers[0] ? data.evaNumbers[0].number + '' : null
+		if (!id) {
+			console.error(`${data.name} (nr ${data.number}) has no IBNR`)
+			cb()
+			return
+		}
+
 		cb(null, {
 			type: 'station',
-			id: data.evaNumbers[0] ? data.evaNumbers[0].number + '' : null,
+			id,
 			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,
