@@ -13,6 +13,7 @@
 	"repository":        "derhuerst/db-stations",
 	"bugs":              "https://github.com/derhuerst/db-stations/issues",
 	"license":           "ISC",
+	"engines":           {"node": ">=6"},
 	"dependencies": {
 		"multipipe": "^1.0.1",
 		"ndjson": "^1.4.3"
