@@ -5,13 +5,13 @@ const slugg = require('slugg')
 
 const parseCoordinates = require('./parse').coordinates
 const parseDS100 = require('./parse').ds100
+const parseId = require('./parse').id
 
 const simplified = () => {
 	return through.obj((data, _, cb) => {
-		const id = data.evaNumbers[0] ? data.evaNumbers[0].number + '' : null
 		cb(null, {
 			type: 'station',
-			id,
+			id: parseId(data),
 			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,

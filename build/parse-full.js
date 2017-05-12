@@ -6,12 +6,13 @@ const omit = require('lodash/omit')
 
 const parseCoordinates = require('./parse').coordinates
 const parseDS100 = require('./parse').ds100
+const parseId = require('./parse').id
 
 const full = () => {
 	return through.obj((data, _, cb) => {
 		cb(null, Object.assign({
 			type: 'station',
-			id: data.evaNumbers[0] ? data.evaNumbers[0].number + '' : null,
+			id: parseId(data),
 			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,

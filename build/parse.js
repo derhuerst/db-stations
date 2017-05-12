@@ -12,6 +12,13 @@ const coordinates = (data) => {
 	} : null
 }
 
+const id = (data) => {
+	const eva = data.evaNumbers.find((eva) => eva.isMain)
+	if (eva) return eva.number
+	if (data.evaNumbers[0]) return data.evaNumbers[0].number
+	return null
+}
+
 const ds100 = (data) => {
 	return (
 		data.ril100Identifiers
@@ -19,4 +26,4 @@ const ds100 = (data) => {
 	) ? data.ril100Identifiers[0].rilIdentifier : null
 }
 
-module.exports = {coordinates, ds100}
+module.exports = {coordinates, id, ds100}
