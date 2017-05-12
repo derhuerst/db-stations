@@ -14,8 +14,8 @@ const coordinates = (data) => {
 
 const id = (data) => {
 	const eva = data.evaNumbers.find((eva) => eva.isMain)
-	if (eva) return eva.number
-	if (data.evaNumbers[0]) return data.evaNumbers[0].number
+	if (eva) return eva.number + ''
+	if (data.evaNumbers[0]) return data.evaNumbers[0].number + ''
 	return null
 }
 
