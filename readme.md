@@ -1,5 +1,7 @@
 # db-stations 🚏
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/derhuerst/db-stations.svg)](https://greenkeeper.io/)
+
 A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from [open data](https://developer.deutschebahn.com/store/apis/info?name=StaDa-Station_Data&version=v2&provider=DBOpenData).
 
 *Warning*: This module does not contain stations without an [IBNR](https://de.wikipedia.org/wiki/Internationale_Bahnhofsnummer).
