@@ -40,7 +40,7 @@ const assertIsValidStation = (t, s) => {
 const assertIsJungfernheide = (t, s) => {
 	t.equal(s.id, '8089100')
 	t.equal(s.nr, 3067)
-	t.equal(s.ds100, 'BJUF')
+	t.equal(s.ds100, 'BJUN')
 	t.equal(s.name, 'Jungfernheide')
 
 	t.equal(s.address.zipcode, '10589')
