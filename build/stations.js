@@ -26,7 +26,7 @@ const request = throttle((token, offset, size) => {
 		}
 		return res.json()
 	})
-}, 10, 61 * 1000) // 10 reqs/min + cushion
+}, 100, 61 * 1000) // 100 reqs/min + cushion
 
 const maxSize = 100
 
