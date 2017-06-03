@@ -5,11 +5,10 @@ node_js:
 script:
   - 'npm run build'
   - 'npm test'
-after_script:
-  - ls -lh data.ndjson full.ndjson
 before_deploy:
+  - ls -lh data.ndjson full.ndjson
   - npm i semver
-  - npm version --no-git-tag-version --force $(./node_modules/.bin/semver -i minor $(npm info vbb-graph version))
+  - npm version --no-git-tag-version --force $(./node_modules/.bin/semver -i minor $(npm info db-stations version))
 deploy:
   provider: npm
   on:
