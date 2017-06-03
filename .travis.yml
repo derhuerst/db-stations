@@ -2,3 +2,19 @@ sudo: false
 language: node_js
 node_js:
   - '6'
+script:
+  - 'npm run build'
+  - 'npm test'
+after_script:
+  - ls -lh data.ndjson full.ndjson
+before_deploy:
+  - npm i semver
+  - npm version --no-git-tag-version --force $(./node_modules/.bin/semver -i minor $(npm info vbb-graph version))
+deploy:
+  provider: npm
+  on:
+    branch: master
+    node: '6'
+  email: 'mail@jannisr.de'
+  api_key: ${NPM_KEY}
+  skip_cleanup: true

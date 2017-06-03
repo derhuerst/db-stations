@@ -33,6 +33,6 @@
 	"scripts": {
 		"build": "node build/index.js",
 		"test": "node test.js | tap-min",
-		"prepublish": "npm run build && npm test"
+		"prepublishOnly": "npm run build && npm test"
 	}
 }
