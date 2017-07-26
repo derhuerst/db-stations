@@ -10,9 +10,15 @@ const parseId = require('./parse').id
 
 const full = () => {
 	return through.obj((data, _, cb) => {
+		const id = parseId(data)
+		const additionalIds = data.evaNumbers
+		.map((eva) => eva.number + '')
+		.filter((additionalId) => additionalId !== id)
+
 		cb(null, Object.assign({
 			type: 'station',
-			id: parseId(data),
+			id,
+			additionalIds,
 			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,

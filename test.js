@@ -84,6 +84,8 @@ test('full.ndjson contains valid full stations', (t) => {
 		t.equal(s.operator.type, 'operator')
 		t.equal(typeof s.operator.id, 'string')
 		t.ok(s.operator.id)
+		t.ok(Array.isArray(s.operator.additionalIds))
+		t.notOk(s.operator.additionalIds.includes(s.operator.id))
 		t.equal(typeof s.operator.name, 'string')
 		t.ok(s.operator.name)
 
