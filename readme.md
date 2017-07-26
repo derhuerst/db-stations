@@ -36,14 +36,11 @@ stations()
 	ds100: 'FALZ', // DS100 code
 	nr: 133, // DB internal
 	name: 'Alzey',
-	coordinates: {
-		latitude: 49.7502,
-		longitude: 8.109749
-	},
+	coordinates: {latitude: 49.7502, longitude: 8.109749},
 	operator: {
 		type: 'operator',
-		id: 'zpnv-sud',
-		name: 'Zweckverband Schienenpersonennahverkehr Rheinland-Pfalz Süd'
+		id: 'zweckverband-schienenpersonennahverkehr-rheinland-pfalz-sud',
+		name: 'ZPNV Süd'
 	},
 	address: {
 		city: 'Alzey',
@@ -68,17 +65,15 @@ stations.full()
 {
 	type: 'station',
 	id: '8000007',
+	additionalIds: [],
 	ds100: 'FALZ',
 	nr: 133,
 	name: 'Alzey',
-	coordinates: {
-		latitude: 8.109749,
-		longitude: 49.7502
-	},
+	coordinates: {latitude: 49.7502, longitude: 8.109749},
 	operator: {
 		type: 'operator',
-		id: 'zpnv-sud',
-		name: 'Zweckverband Schienenpersonennahverkehr Rheinland-Pfalz Süd'
+		id: 'zweckverband-schienenpersonennahverkehr-rheinland-pfalz-sud',
+		name: 'ZPNV Süd'
 	},
 	address: {
 		city: 'Alzey',
@@ -86,6 +81,7 @@ stations.full()
 		street: 'Bahnhofstr. 30'
 	},
 	category: 3,
+	priceCategory: 3,
 	hasParking: true,
 	hasBicycleParking: true,
 	hasLocalPublicTransport: true,
@@ -95,6 +91,12 @@ stations.full()
 	hasTravelNecessities: false,
 	hasSteplessAccess: 'partial',
 	hasMobilityService: 'no',
+	hasWiFi: false,
+	hasTravelCenter: false,
+	hasRailwayMission: false,
+	hasDBLounge: false,
+	hasLostAndFound: false,
+	hasCarRental: false,
 	federalState: 'Rheinland-Pfalz',
 	regionalbereich: {
 		number: 5,
@@ -114,20 +116,18 @@ stations.full()
 		number: 184,
 		name: 'Mainz'
 	},
-	ril100Identifiers: [
-		{
-			rilIdentifier: 'FALZ',
-			isMain: true,
-			hasSteamPermission: true,
-			geographicCoordinates: {
-				type: 'Point',
-				coordinates: [
-					8.109684725,
-					49.750267695
-				]
-			}
+	ril100Identifiers: [ {
+		rilIdentifier: 'FALZ',
+		isMain: true,
+		hasSteamPermission: true,
+		geographicCoordinates: {
+			type: 'Point',
+			coordinates: [
+				8.109684725,
+				49.750267695
+			]
 		}
-	]
+	} ]
 }
 ```
 
