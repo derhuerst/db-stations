@@ -6,6 +6,7 @@ const throttle = require('p-throttle')
 const qs = require('querystring')
 const {fetch} = require('fetch-ponyfill')()
 const from = require('from2')
+const through = require('through2')
 
 const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
 
@@ -42,13 +43,16 @@ const download = (token) => {
 		request(token, offset, size)
 		.then((data) => {
 			total = data.total
-
 			cb(null, data.result)
 		})
 		.catch(cb)
 
 		offset += size
 	})
+	.pipe(through.obj(function (stations, _, cb) {
+		for (let s of stations) this.push(s)
+		cb()
+	}))
 }
 
 module.exports = download

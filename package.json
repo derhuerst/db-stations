@@ -1,34 +1,45 @@
 {
-	"name":              "db-stations",
-	"description":       "A list of DB stations.",
-	"version":           "1.0.1",
-	"main":              "index.js",
-	"files":             ["index.js", "data.ndjson", "full.ndjson"],
-	"keywords": [
-		"db", "deutsche bahn", "german railway", "public transport",
-		"stations", "open data", "json"
+	"name": "db-stations",
+	"description": "A list of DB stations.",
+	"version": "1.0.1",
+	"main": "index.js",
+	"files": [
+		"index.js",
+		"data.ndjson",
+		"full.ndjson"
 	],
-	"author":            "Jannis R <mail@jannisr.de>",
-	"homepage":          "https://github.com/derhuerst/db-stations",
-	"repository":        "derhuerst/db-stations",
-	"bugs":              "https://github.com/derhuerst/db-stations/issues",
-	"license":           "ISC",
-	"engines":           {"node": ">=6"},
+	"keywords": [
+		"db",
+		"deutsche bahn",
+		"german railway",
+		"public transport",
+		"stations",
+		"open data",
+		"json"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/db-stations",
+	"repository": "derhuerst/db-stations",
+	"bugs": "https://github.com/derhuerst/db-stations/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
 	"dependencies": {
 		"ndjson": "^1.5.0"
 	},
 	"devDependencies": {
 		"fetch-ponyfill": "^4.0.0",
 		"from2": "2.3.0",
+		"is-roughly-equal": "^0.1.0",
 		"lodash": "^4.7.14",
 		"multipipe": "^1.0.2",
 		"p-throttle": "^1.1.0",
 		"slugg": "^1.2.0",
 		"stream-filter": "^2.1.0",
-		"through2": "^2.0.3",
-		"tape": "^4.6.3",
 		"tap-min": "^1.2.1",
-		"is-roughly-equal": "^0.1.0"
+		"tape": "^4.6.3",
+		"through2": "^2.0.3"
 	},
 	"scripts": {
 		"build": "node build/index.js",
