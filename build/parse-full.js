@@ -22,6 +22,7 @@ const full = () => {
 			ds100: parseDS100(data),
 			nr: data.number,
 			name: data.name,
+			weight: data.weight,
 			coordinates: parseCoordinates(data),
 			operator: data.aufgabentraeger ? {
 				type: 'operator',
