@@ -22,6 +22,12 @@ const assertIsValidStation = (t, s) => {
 	t.equal(typeof s.name, 'string')
 	t.ok(s.name)
 
+	if (s.weight !== undefined && s.weight !== null) {
+		t.equal(typeof s.weight, 'number')
+		if (!(s.weight > 0)) console.error(s)
+		t.ok(s.weight > 0)
+	}
+
 	t.ok(s.address)
 	if (s.address.street) t.equal(typeof s.address.street, 'string')
 	t.equal(typeof s.address.zipcode, 'string')

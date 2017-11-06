@@ -33,6 +33,7 @@
 		"fetch-ponyfill": "^4.0.0",
 		"from2": "2.3.0",
 		"is-roughly-equal": "^0.1.0",
+		"is-stream": "^1.1.0",
 		"lodash": "^4.7.14",
 		"multipipe": "^1.0.2",
 		"p-throttle": "^1.1.0",

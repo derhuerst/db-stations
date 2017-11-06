@@ -36,6 +36,7 @@ stations()
 	ds100: 'FALZ', // DS100 code
 	nr: 133, // DB internal
 	name: 'Alzey',
+	weight: 73.1,
 	coordinates: {latitude: 49.7502, longitude: 8.109749},
 	operator: {
 		type: 'operator',
@@ -69,6 +70,7 @@ stations.full()
 	ds100: 'FALZ',
 	nr: 133,
 	name: 'Alzey',
+	weight: 73.1,
 	coordinates: {latitude: 49.7502, longitude: 8.109749},
 	operator: {
 		type: 'operator',
