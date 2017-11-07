@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"files": [
 		"index.js",
+		"create-filter.js",
 		"data.ndjson",
 		"full.ndjson"
 	],
@@ -26,7 +27,8 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"ndjson": "^1.5.0"
+		"ndjson": "^1.5.0",
+		"tokenize-db-station-name": "^1.0.0"
 	},
 	"devDependencies": {
 		"compute-db-station-weight": "^0.1.0",
