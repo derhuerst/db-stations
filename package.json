@@ -3,8 +3,10 @@
 	"description": "A list of DB stations.",
 	"version": "1.1.0",
 	"main": "index.js",
+	"browser": "browser.js",
 	"files": [
 		"index.js",
+		"browser.js",
 		"create-filter.js",
 		"data.ndjson",
 		"full.ndjson"
@@ -27,6 +29,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"from2-string": "^1.1.0",
 		"ndjson": "^1.5.0",
 		"tokenize-db-station-name": "^1.0.0"
 	},

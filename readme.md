@@ -134,6 +134,17 @@ stations.full()
 ```
 
 
+## Browser support
+
+If you use [`browserify`](http://browserify.org/), transpile the file system calls in `db-stations` using [`brfs`](https://github.com/browserify/brfs):
+
+```shell
+browserify -g brfs my-project.js >bundle.js
+```
+
+Note that this will inline both `data.ndjson` and `full.ndjson` (~6mb in total) into your JS bundle.
+
+
 ## Contributing
 
 If you **have a question**, **found a bug** or want to **propose a feature**, have a look at [the issues page](https://github.com/derhuerst/db-stations/issues).
