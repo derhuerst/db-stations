@@ -1,22 +1,12 @@
 'use strict'
 
-const fs = require('fs')
-const fromStr = require('from2-string')
-const ndjson = require('ndjson')
-const path = require('path')
+const fromArr = require('from2-array')
 
-const stationsFile = fs.readFileSync('data.ndjson', 'utf8')
-const fullFile = fs.readFileSync('full.ndjson', 'utf8')
+const stationsData = require('./data.json')
+const fullData = require('./full.json')
 
-const read = (buf) => {
-	const raw = fromStr(buf)
-	const parser = ndjson.parse()
-	raw.pipe(parser)
-	return parser
-}
-
-const stations = () => read(stationsFile)
-const full = () => read(fullFile)
+const stations = () => fromArr.obj(stationsData)
+const full = () => fromArr.obj(fullData)
 stations.full = full
 
 module.exports = stations
