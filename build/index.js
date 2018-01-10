@@ -7,7 +7,7 @@ const fs = require('fs')
 const path = require('path')
 const ms = require('ms')
 
-const stations = require('./stations')
+const getStations = require('./stations')
 const parseFull = require('./parse-full')
 const parseSimplified = require('./parse-simplified')
 
@@ -23,18 +23,9 @@ const showError = (err) => {
 	process.exit(1)
 }
 
-const src = pipe(
-	stations(TOKEN),
-	through.obj(function (s, _, cb) {
-		const id = s.evaNumbers[0] ? s.evaNumbers[0].number + '' : null
-		if (id) this.push(s)
-		else console.error(`${s.name} (nr ${s.number}) has no IBNR`)
-		cb()
-	}),
-	showError
-)
+const stations = getStations(TOKEN)
 
-src.on('progress', (p) => {
+stations.on('progress', (p) => {
 	console.info([
 		Math.round(p.percentage) + '%',
 		'–',
@@ -45,6 +36,17 @@ src.on('progress', (p) => {
 		'ETA: ' + ms(p.eta)
 	].join(' '))
 })
+
+const src = pipe(
+	stations,
+	through.obj(function (s, _, cb) {
+		const id = s.evaNumbers[0] ? s.evaNumbers[0].number + '' : null
+		if (id) this.push(s)
+		else console.error(`${s.name} (nr ${s.number}) has no IBNR`)
+		cb()
+	}),
+	showError
+)
 
 pipe(
 	src,
