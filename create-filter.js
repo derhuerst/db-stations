@@ -12,12 +12,10 @@ const createFilter = (sel) => {
 		if (('weight' in sel) && s.weight !== sel.weight) return false
 
 		if ('latitude' in sel) {
-			if (!s.coordinates) return false
-			if (s.coordinates.latitude !== sel.latitude) return false
+			if (!s.location || s.location.latitude !== sel.latitude) return false
 		}
 		if ('longitude' in sel) {
-			if (!s.coordinates) return false
-			if (s.coordinates.longitude !== sel.longitude) return false
+			if (!s.location || s.location.longitude !== sel.longitude) return false
 		}
 
 		if ('name' in sel) {

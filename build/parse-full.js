@@ -4,7 +4,7 @@ const through = require('through2')
 const slugg = require('slugg')
 const omit = require('lodash/omit')
 
-const parseCoordinates = require('./parse').coordinates
+const parseLocation = require('./parse').location
 const parseDS100 = require('./parse').ds100
 const parseId = require('./parse').id
 
@@ -23,7 +23,7 @@ const full = () => {
 			nr: data.number,
 			name: data.name,
 			weight: data.weight,
-			coordinates: parseCoordinates(data),
+			location: parseLocation(data),
 			operator: data.aufgabentraeger ? {
 				type: 'operator',
 				id: slugg(data.aufgabentraeger.name), // WAT

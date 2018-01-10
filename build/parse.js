@@ -1,15 +1,19 @@
 'use strict'
 
-const coordinates = (data) => {
-	return (
-		data.evaNumbers
-		&& data.evaNumbers[0]
-		&& data.evaNumbers[0].geographicCoordinates
-		&& data.evaNumbers[0].geographicCoordinates.coordinates
-	) ? {
-		latitude: data.evaNumbers[0].geographicCoordinates.coordinates[1],
-		longitude: data.evaNumbers[0].geographicCoordinates.coordinates[0]
-	} : null
+const location = (data) => {
+	if (
+		data.evaNumbers &&
+		data.evaNumbers[0] &&
+		data.evaNumbers[0].geographicCoordinates &&
+		data.evaNumbers[0].geographicCoordinates.coordinates
+	) {
+		return {
+			type: 'location',
+			latitude: data.evaNumbers[0].geographicCoordinates.coordinates[1],
+			longitude: data.evaNumbers[0].geographicCoordinates.coordinates[0]
+		}
+	}
+	return null
 }
 
 const id = (data) => {
@@ -26,4 +30,4 @@ const ds100 = (data) => {
 	) ? data.ril100Identifiers[0].rilIdentifier : null
 }
 
-module.exports = {coordinates, id, ds100}
+module.exports = {location, id, ds100}

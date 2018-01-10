@@ -37,7 +37,11 @@ stations()
 	nr: 133, // DB internal
 	name: 'Alzey',
 	weight: 73.1,
-	coordinates: {latitude: 49.7502, longitude: 8.109749},
+	location: {
+		type: 'location',
+		latitude: 49.7502,
+		longitude: 8.109749
+	},
 	operator: {
 		type: 'operator',
 		id: 'zweckverband-schienenpersonennahverkehr-rheinland-pfalz-sud',
@@ -71,7 +75,11 @@ stations.full()
 	nr: 133,
 	name: 'Alzey',
 	weight: 73.1,
-	coordinates: {latitude: 49.7502, longitude: 8.109749},
+	location: {
+		type: 'location',
+		latitude: 49.7502,
+		longitude: 8.109749
+	},
 	operator: {
 		type: 'operator',
 		id: 'zweckverband-schienenpersonennahverkehr-rheinland-pfalz-sud',

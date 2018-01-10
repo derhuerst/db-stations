@@ -35,11 +35,12 @@ const assertIsValidStation = (t, s) => {
 	t.equal(typeof s.address.city, 'string')
 	t.ok(s.address.city)
 
-	if (s.coordinates !== null) {
-		t.equal(typeof s.coordinates.latitude, 'number')
-		t.ok(isRoughlyEqual(5, s.coordinates.latitude, 51))
-		t.equal(typeof s.coordinates.longitude, 'number')
-		t.ok(isRoughlyEqual(5, s.coordinates.longitude, 10))
+	if (s.location !== null) {
+		t.equal(s.location.type, 'location')
+		t.equal(typeof s.location.latitude, 'number')
+		t.ok(isRoughlyEqual(5, s.location.latitude, 51))
+		t.equal(typeof s.location.longitude, 'number')
+		t.ok(isRoughlyEqual(5, s.location.longitude, 10))
 	}
 }
 
@@ -52,8 +53,8 @@ const assertIsJungfernheide = (t, s) => {
 	t.equal(s.address.zipcode, '10589')
 	t.equal(s.address.city, 'Berlin')
 
-	t.ok(isRoughlyEqual(.0001, s.coordinates.latitude, 52.530276))
-	t.ok(isRoughlyEqual(.0001, s.coordinates.longitude, 13.299437))
+	t.ok(isRoughlyEqual(.0001, s.location.latitude, 52.530276))
+	t.ok(isRoughlyEqual(.0001, s.location.longitude, 13.299437))
 }
 
 
