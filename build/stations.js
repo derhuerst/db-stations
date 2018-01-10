@@ -61,7 +61,7 @@ const download = (token) => {
 
 	const progress = progressStream({objectMode: true, time: 5 * 1000})
 
-	const out = from.obj((_, cb) => {
+	return from.obj((_, cb) => {
 		if (offset >= total) return cb(null, null)
 		const size = Math.min(maxSize, total - offset)
 
@@ -81,8 +81,6 @@ const download = (token) => {
 	}))
 	.pipe(concurrentThrough.obj({maxConcurrency: 10}, computeWeight))
 	.pipe(progress)
-
-	return out
 }
 
 module.exports = download

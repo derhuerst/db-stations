@@ -5,6 +5,7 @@ const through = require('through2')
 const ndjson = require('ndjson')
 const fs = require('fs')
 const path = require('path')
+const ms = require('ms')
 
 const stations = require('./stations')
 const parseFull = require('./parse-full')
@@ -35,11 +36,13 @@ const src = pipe(
 
 src.on('progress', (p) => {
 	console.info([
+		Math.round(p.percentage) + '%',
+		'–',
 		p.transferred + '/' + p.length,
 		'–',
 		p.speed + '/' + s,
 		'–',
-		'ETA: ' + ETA
+		'ETA: ' + ms(p.eta)
 	].join(' '))
 })
 

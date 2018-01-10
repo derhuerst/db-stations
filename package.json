@@ -42,6 +42,7 @@
 		"is-roughly-equal": "^0.1.0",
 		"is-stream": "^1.1.0",
 		"lodash": "^4.7.14",
+		"ms": "^2.1.1",
 		"multipipe": "^2.0.0",
 		"p-throttle": "^1.1.0",
 		"progress-stream": "^2.0.0",
