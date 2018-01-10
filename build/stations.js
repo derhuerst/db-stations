@@ -59,7 +59,7 @@ const download = (token) => {
 	let offset = 0
 	let total = Infinity
 
-	const progress = progressStream({objectMode: true, time: 5 * 1000})
+	const progress = progressStream({objectMode: true})
 
 	return from.obj((_, cb) => {
 		if (offset >= total) return cb(null, null)

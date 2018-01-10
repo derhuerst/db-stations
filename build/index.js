@@ -25,17 +25,18 @@ const showError = (err) => {
 
 const stations = getStations(TOKEN)
 
-stations.on('progress', (p) => {
+setInterval(() => {
+	const p = stations.progress()
 	console.info([
 		Math.round(p.percentage) + '%',
 		'–',
 		p.transferred + '/' + p.length,
 		'–',
-		p.speed + '/' + s,
+		Math.round(p.speed) + '/s',
 		'–',
 		'ETA: ' + ms(p.eta)
 	].join(' '))
-})
+}, 5 * 1000)
 
 const src = pipe(
 	stations,
