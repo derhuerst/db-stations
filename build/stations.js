@@ -8,7 +8,8 @@ const {fetch} = require('fetch-ponyfill')()
 const from = require('from2')
 const through = require('through2')
 const concurrentThrough = require('through2-concurrent')
-const _computeWeight = require('compute-db-station-weight')
+const _computeWeightOf = require('compute-db-station-weight')
+const progressStream = require('progress-stream')
 
 const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
 
@@ -31,25 +32,43 @@ const request = throttle((token, offset, size) => {
 	})
 }, 100, 61 * 1000) // 100 reqs/min + cushion
 
-const computeWeight = throttle(_computeWeight, 500, 61 * 1000) // 500 reqs/min + cushion
-
-const maxSize = 100
-
+const computeWeightOf = throttle(_computeWeightOf, 500, 61 * 1000) // 500 reqs/min + cushion
 const weight0Msg = `\
 has a weight of 0. Probably there are no departures here.`
+
+const computeWeight = (s, _, cb) => {
+	const id = s.evaNumbers[0] && s.evaNumbers[0].number
+	if ('number' !== typeof id) return cb(null, s)
+
+	computeWeightOf(id + '')
+	.then(weight => {
+		if (weight === 0) console.error(id + '', s.name, weight0Msg)
+		else s.weight = weight
+		cb(null, s)
+	})
+	.catch((err) => {
+		if (err.isHafasError) {
+			console.error(id + '', s.name, err.message || (err + ''))
+		} else cb(err)
+	})
+}
+
+const maxSize = 100
 
 const download = (token) => {
 	let offset = 0
 	let total = Infinity
 
-	return from.obj((_, cb) => {
-		console.error(`${offset} of ${total} total`)
+	const progress = progressStream({objectMode: true, time: 5 * 1000})
+
+	const out = from.obj((_, cb) => {
 		if (offset >= total) return cb(null, null)
 		const size = Math.min(maxSize, total - offset)
 
 		request(token, offset, size)
 		.then((data) => {
 			total = data.total
+			progress.setLength(total)
 			cb(null, data.result)
 		})
 		.catch(cb)
@@ -60,24 +79,10 @@ const download = (token) => {
 		for (let s of stations) this.push(s)
 		cb()
 	}))
-	.pipe(concurrentThrough.obj({
-		maxConcurrency: 10
-	}, (s, _, cb) => {
-		const id = s.evaNumbers[0] && s.evaNumbers[0].number
-		if ('number' !== typeof id) return cb(null, s)
+	.pipe(concurrentThrough.obj({maxConcurrency: 10}, computeWeight))
+	.pipe(progress)
 
-		computeWeight(id + '')
-		.then(weight => {
-			if (weight === 0) console.error(id + '', s.name, weight0Msg)
-			else s.weight = weight
-			cb(null, s)
-		})
-		.catch((err) => {
-			if (err.isHafasError) {
-				console.error(id + '', s.name, err.message || (err + ''))
-			} else cb(err)
-		})
-	}))
+	return out
 }
 
 module.exports = download

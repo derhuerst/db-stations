@@ -33,6 +33,16 @@ const src = pipe(
 	showError
 )
 
+src.on('progress', (p) => {
+	console.info([
+		p.transferred + '/' + p.length,
+		'–',
+		p.speed + '/' + s,
+		'–',
+		'ETA: ' + ETA
+	].join(' '))
+})
+
 pipe(
 	src,
 	parseSimplified(),

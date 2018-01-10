@@ -44,6 +44,7 @@
 		"lodash": "^4.7.14",
 		"multipipe": "^2.0.0",
 		"p-throttle": "^1.1.0",
+		"progress-stream": "^2.0.0",
 		"slugg": "^1.2.0",
 		"stream-filter": "^2.1.0",
 		"stream-sink": "^2.1.0",
