@@ -8,7 +8,7 @@ const {fetch} = require('fetch-ponyfill')()
 const from = require('from2')
 const through = require('through2')
 const concurrentThrough = require('through2-concurrent')
-const computeWeight = require('compute-db-station-weight')
+const _computeWeight = require('compute-db-station-weight')
 
 const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
 
@@ -30,6 +30,8 @@ const request = throttle((token, offset, size) => {
 		return res.json()
 	})
 }, 100, 61 * 1000) // 100 reqs/min + cushion
+
+const computeWeight = throttle(_computeWeight, 500, 61 * 1000) // 500 reqs/min + cushion
 
 const maxSize = 100
 
