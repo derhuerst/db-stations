@@ -25,7 +25,7 @@ const showError = (err) => {
 
 const stations = getStations(TOKEN)
 
-setInterval(() => {
+const progressInterval = setInterval(() => {
 	const p = stations.progress()
 	console.info([
 		Math.round(p.percentage) + '%',
@@ -37,6 +37,9 @@ setInterval(() => {
 		'ETA: ' + ms(p.eta * 1000)
 	].join(' '))
 }, 5 * 1000)
+
+stations.once('end', () => clearInterval(progressInterval))
+stations.once('error', () => clearInterval(progressInterval))
 
 const src = pipe(
 	stations,
