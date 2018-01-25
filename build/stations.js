@@ -8,8 +8,9 @@ const {fetch} = require('fetch-ponyfill')()
 const from = require('from2')
 const through = require('through2')
 const concurrentThrough = require('through2-concurrent')
-const _computeWeightOf = require('compute-db-station-weight')
 const progressStream = require('progress-stream')
+
+const estimateStationWeight = require('./estimate-station-weight')
 
 const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
 
@@ -32,7 +33,6 @@ const request = throttle((token, offset, size) => {
 	})
 }, 100, 61 * 1000) // 100 reqs/min + cushion
 
-const computeWeightOf = throttle(_computeWeightOf, 10, 1000) // 10 req/s
 const weight0Msg = `\
 has a weight of 0. Probably there are no departures here.`
 
@@ -40,7 +40,7 @@ const computeWeight = (s, _, cb) => {
 	const id = s.evaNumbers[0] && s.evaNumbers[0].number
 	if ('number' !== typeof id) return cb(null, s)
 
-	computeWeightOf(id + '')
+	estimateStationWeight(id + '')
 	.then(weight => {
 		if (weight === 0) console.error(id + '', s.name, weight0Msg)
 		else s.weight = weight
