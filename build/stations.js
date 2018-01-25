@@ -32,7 +32,7 @@ const request = throttle((token, offset, size) => {
 	})
 }, 100, 61 * 1000) // 100 reqs/min + cushion
 
-const computeWeightOf = throttle(_computeWeightOf, 500, 61 * 1000) // 500 reqs/min + cushion
+const computeWeightOf = throttle(_computeWeightOf, 10, 1000) // 10 req/s
 const weight0Msg = `\
 has a weight of 0. Probably there are no departures here.`
 
@@ -49,6 +49,7 @@ const computeWeight = (s, _, cb) => {
 	.catch((err) => {
 		if (err.isHafasError) {
 			console.error(id + '', s.name, err.message || (err + ''))
+			cb()
 		} else cb(err)
 	})
 }
