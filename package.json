@@ -59,7 +59,6 @@
 	"scripts": {
 		"build": "node build/index.js",
 		"browser": "node build/convert-to-browser.js",
-		"test": "node test.js | tap-min",
-		"prepublishOnly": "npm run build && npm run browser && npm test"
+		"test": "node test.js | tap-min"
 	}
 }

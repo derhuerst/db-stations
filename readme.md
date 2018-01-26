@@ -5,7 +5,7 @@ A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed fro
 *Warning*: This module does not contain stations without an [IBNR](https://de.wikipedia.org/wiki/Internationale_Bahnhofsnummer).
 
 [![npm version](https://img.shields.io/npm/v/db-stations.svg)](https://www.npmjs.com/package/db-stations)
-[![build status](https://img.shields.io/travis/derhuerst/db-stations.svg)](https://travis-ci.org/derhuerst/db-stations)
+[![build status](https://img.shields.io/codeship/a827d230-e420-0135-2d6a-3e0434e5c2c3/master.svg)](https://app.codeship.com/projects/268749)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/db-stations.svg)
 [![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 
