@@ -8,6 +8,7 @@ A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed fro
 [![build status](https://img.shields.io/codeship/a827d230-e420-0135-2d6a-3e0434e5c2c3/master.svg)](https://app.codeship.com/projects/268749)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/db-stations.svg)
 [![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
+[![support me on Patreon](https://img.shields.io/badge/support%20me-on%20patreon-fa7664.svg)](https://patreon.com/derhuerst)
 
 
 ## Installing
