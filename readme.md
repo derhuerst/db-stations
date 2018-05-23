@@ -1,4 +1,4 @@
-# db-stations 🚏
+# db-stations
 
 A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed from [open data](https://developer.deutschebahn.com/store/apis/info?name=StaDa-Station_Data&version=v2&provider=DBOpenData).
 
