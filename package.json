@@ -31,7 +31,6 @@
 		"node": ">=6"
 	},
 	"dependencies": {
-		"from2-array": "^0.0.4",
 		"ndjson": "^1.5.0",
 		"tokenize-db-station-name": "^1.0.0"
 	},
@@ -46,7 +45,6 @@
 		"lodash": "^4.7.14",
 		"ms": "^2.1.1",
 		"multipipe": "^2.0.0",
-		"p-throttle": "^1.1.0",
 		"progress-stream": "^2.0.0",
 		"slugg": "^1.2.0",
 		"stream-filter": "^2.1.0",
