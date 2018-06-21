@@ -32,6 +32,7 @@ const request = (token, offset, size) => {
 	})
 }
 
+const maxIterations = 30
 const weight0Msg = `\
 has a weight of 0. Probably there are no departures here.`
 
@@ -39,7 +40,7 @@ const computeWeight = (s, _, cb) => {
 	const id = s.evaNumbers[0] && s.evaNumbers[0].number
 	if ('number' !== typeof id) return cb(null, s)
 
-	estimateStationWeight(id + '')
+	estimateStationWeight(id + '', maxIterations)
 	.then(weight => {
 		if (weight === 0) console.error(id + '', s.name, weight0Msg)
 		else s.weight = weight
