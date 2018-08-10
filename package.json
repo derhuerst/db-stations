@@ -52,7 +52,7 @@
 		"tap-min": "^1.2.1",
 		"tape": "^4.6.3",
 		"through2": "^2.0.3",
-		"through2-concurrent": "^1.1.1"
+		"through2-concurrent": "^2.0.0"
 	},
 	"scripts": {
 		"build": "node build/index.js && node build/convert-to-browser.js",
