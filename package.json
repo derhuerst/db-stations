@@ -35,7 +35,7 @@
 		"tokenize-db-station-name": "^1.0.0"
 	},
 	"devDependencies": {
-		"compute-db-station-weight": "^0.2.1",
+		"compute-db-station-weight": "^1.0.0",
 		"db-hafas": "^3.0.1",
 		"fetch-ponyfill": "^6.0.0",
 		"from2": "2.3.0",
