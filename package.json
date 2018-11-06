@@ -51,7 +51,7 @@
 		"stream-sink": "^2.1.0",
 		"tap-min": "^1.2.1",
 		"tape": "^4.6.3",
-		"through2": "^2.0.3",
+		"through2": "^3.0.0",
 		"through2-concurrent": "^2.0.0"
 	},
 	"scripts": {
