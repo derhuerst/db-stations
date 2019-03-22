@@ -17,6 +17,8 @@ A **collection of all stations of [Deutsche Bahn](http://db.de/)**, computed fro
 npm install db-stations
 ```
 
+*Note:* This Git repo does not contain the data, but the npm package does.
+
 
 ## Usage
 
@@ -141,6 +143,13 @@ stations.full()
 	} ]
 }
 ```
+
+
+## Related
+
+- [`db-stations-autocomplete`](https://github.com/derhuerst/db-stations-autocomplete#db-stations-autocomplete) – Search for stations of DB (data from DB station API).
+- [`db-hafas-stations`](https://github.com/derhuerst/db-hafas-stations#db-hafas-stations) – A list of DB stations, taken from HAFAS.
+- [`db-hafas-stations-autocomplete`](https://github.com/derhuerst/db-hafas-stations-autocomplete#db-stations-autocomplete) – Search for stations of DB (data from HAFAS).
 
 
 ## Contributing
