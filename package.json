@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"compute-db-station-weight": "^1.0.0",
-		"db-hafas": "^3.0.1",
+		"db-hafas": "^4.0.0",
 		"fetch-ponyfill": "^6.0.0",
 		"from2": "2.3.0",
 		"hafas-estimate-station-weight": "^1.0.2",
