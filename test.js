@@ -29,7 +29,9 @@ const assertIsValidStation = (t, s) => {
 	}
 
 	t.ok(s.address)
-	if (s.address.street) t.equal(typeof s.address.street, 'string')
+	if (s.address && s.address.street) {
+		t.equal(typeof s.address.street, 'string')
+	}
 	t.equal(typeof s.address.zipcode, 'string')
 	t.ok(s.address.zipcode)
 	t.equal(typeof s.address.city, 'string')
@@ -100,13 +102,12 @@ test('full.ndjson contains valid full stations', (t) => {
 		if (s.category) t.equal(typeof s.category, 'number')
 		if (s.federalState) t.equal(typeof s.federalState, 'string')
 
-		// todo
-		// t.equal(typeof s.hasParking, 'boolean')
-		// t.equal(typeof s.hasBicycleParking, 'boolean')
-		// t.equal(typeof s.hasLocalPublicTransport, 'boolean')
-		// t.equal(typeof s.hasPublicFacilities, 'boolean')
-		// t.equal(typeof s.hasLockerSystem, 'boolean')
-		// t.equal(typeof s.hasTaxiRank, 'boolean')
+		if ('hasParking' in s) t.equal(typeof s.hasParking, 'boolean')
+		if ('hasBicycleParking' in s) t.equal(typeof s.hasBicycleParking, 'boolean')
+		if ('hasLocalPublicTransport' in s) t.equal(typeof s.hasLocalPublicTransport, 'boolean')
+		if ('hasPublicFacilities' in s) t.equal(typeof s.hasPublicFacilities, 'boolean')
+		if ('hasLockerSystem' in s) t.equal(typeof s.hasLockerSystem, 'boolean')
+		if ('hasTaxiRank' in s) t.equal(typeof s.hasTaxiRank, 'boolean')
 	})
 	.on('end', () => {
 		t.end()
