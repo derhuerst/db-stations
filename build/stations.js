@@ -70,6 +70,7 @@ const download = (token) => {
 		progess.destroy(err)
 	})
 
+	weight.once('error', err => progess.destroy(err))
 	return weight
 	.pipe(progess)
 }
