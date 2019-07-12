@@ -36,7 +36,7 @@ stations()
 {
 	type: 'station',
 	id: '8000007', // EVA number
-	ds100: 'FALZ', // DS100 code
+	ril100: 'FALZ', // RIL100/RL100/DS100 code
 	nr: 133, // DB internal
 	name: 'Alzey',
 	weight: 73.1,
@@ -74,7 +74,7 @@ stations.full()
 	type: 'station',
 	id: '8000007',
 	additionalIds: [],
-	ds100: 'FALZ',
+	ril100: 'FALZ',
 	nr: 133,
 	name: 'Alzey',
 	weight: 73.1,

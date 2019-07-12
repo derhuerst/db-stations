@@ -23,11 +23,9 @@ const id = (data) => {
 	return null
 }
 
-const ds100 = (data) => {
-	return (
-		data.ril100Identifiers
-		&& data.ril100Identifiers[0]
-	) ? data.ril100Identifiers[0].rilIdentifier : null
+const ril100 = (data) => {
+	const id = data.ril100Identifiers.some(id => !!id.rilIdentifier)
+	return id && id.rilIdentifier || null
 }
 
-module.exports = {location, id, ds100}
+module.exports = {location, id, ril100}

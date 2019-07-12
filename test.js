@@ -14,9 +14,9 @@ const assertIsValidStation = (t, s) => {
 	t.ok(s.id)
 
 	if (s.nr !== null) t.equal(typeof s.nr, 'number')
-	if (s.ds100 !== null) {
-		t.equal(typeof s.ds100, 'string')
-		t.ok(s.ds100)
+	if (s.ril100 !== null) {
+		t.equal(typeof s.ril100, 'string')
+		t.ok(s.ril100)
 	}
 
 	t.equal(typeof s.name, 'string')
@@ -49,7 +49,7 @@ const assertIsValidStation = (t, s) => {
 const assertIsJungfernheide = (t, s) => {
 	t.equal(s.id, '8089100')
 	t.equal(s.nr, 3067)
-	t.ok(s.ds100 === 'BJUF' || s.ds100 === 'BJUN') // WAT
+	t.ok(s.ril100 === 'BJUF' || s.ril100 === 'BJUN') // WAT
 	t.equal(s.name, 'Jungfernheide')
 
 	t.equal(s.address.zipcode, '10589')

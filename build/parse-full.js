@@ -5,7 +5,7 @@ const slugg = require('slugg')
 const omit = require('lodash/omit')
 
 const parseLocation = require('./parse').location
-const parseDS100 = require('./parse').ds100
+const parseRil100 = require('./parse').RIL100
 const parseId = require('./parse').id
 
 const full = () => {
@@ -19,7 +19,7 @@ const full = () => {
 			type: 'station',
 			id,
 			additionalIds,
-			ds100: parseDS100(data),
+			ril100: parseRil100(data), // a.k.a. RL100, a.k.a. DS100
 			nr: data.number,
 			name: data.name,
 			weight: data.weight,

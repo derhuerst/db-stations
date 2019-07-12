@@ -4,7 +4,7 @@ const through = require('through2')
 const slugg = require('slugg')
 
 const parseLocation = require('./parse').location
-const parseDS100 = require('./parse').ds100
+const parseRil100 = require('./parse').ril100
 const parseId = require('./parse').id
 
 const simplified = () => {
@@ -12,7 +12,7 @@ const simplified = () => {
 		cb(null, {
 			type: 'station',
 			id: parseId(data),
-			ds100: parseDS100(data),
+			ril100: parseRil100(data),
 			nr: data.number,
 			name: data.name,
 			weight: data.weight,
