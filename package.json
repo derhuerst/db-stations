@@ -28,20 +28,20 @@
 	"bugs": "https://github.com/derhuerst/db-stations/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=6"
+		"node": ">=8"
 	},
 	"dependencies": {
 		"ndjson": "^1.5.0",
-		"tokenize-db-station-name": "^1.0.0"
+		"tokenize-db-station-name": "^2.2.1"
 	},
 	"devDependencies": {
-		"compute-db-station-weight": "^1.0.0",
-		"db-hafas": "^3.0.1",
+		"compute-db-station-weight": "^2.0.0",
+		"db-hafas": "^4.0.0",
 		"fetch-ponyfill": "^6.0.0",
 		"from2": "2.3.0",
-		"hafas-estimate-station-weight": "^1.0.2",
+		"hafas-estimate-station-weight": "^2.0.0",
 		"is-roughly-equal": "^0.1.0",
-		"is-stream": "^1.1.0",
+		"is-stream": "^2.0.0",
 		"lodash": "^4.7.14",
 		"ms": "^2.1.1",
 		"multipipe": "^3.0.0",
@@ -49,7 +49,7 @@
 		"slugg": "^1.2.0",
 		"stream-filter": "^2.1.0",
 		"stream-sink": "^2.1.0",
-		"tap-min": "^1.2.1",
+		"tap-min": "^2.0.0",
 		"tape": "^4.6.3",
 		"through2": "^3.0.0",
 		"through2-concurrent": "^2.0.0"
