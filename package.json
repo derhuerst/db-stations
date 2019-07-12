@@ -39,7 +39,7 @@
 		"db-hafas": "^3.0.1",
 		"fetch-ponyfill": "^6.0.0",
 		"from2": "2.3.0",
-		"hafas-estimate-station-weight": "^1.0.2",
+		"hafas-estimate-station-weight": "^2.0.0",
 		"is-roughly-equal": "^0.1.0",
 		"is-stream": "^1.1.0",
 		"lodash": "^4.7.14",
