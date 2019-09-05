@@ -1,6 +1,7 @@
 'use strict'
 
 const pipe = require('multipipe')
+const progressStream = require('progress-stream')
 const through = require('through2')
 const ndjson = require('ndjson')
 const fs = require('fs')
@@ -23,10 +24,7 @@ const showError = (err) => {
 	process.exit(1)
 }
 
-const stations = getStations(TOKEN)
-
-const progressInterval = setInterval(() => {
-	const p = stations.progress()
+const reportProgress = (p) => {
 	console.info([
 		Math.round(p.percentage) + '%',
 		'–',
@@ -36,10 +34,17 @@ const progressInterval = setInterval(() => {
 		'–',
 		'ETA: ' + (Number.isNaN(p.eta) ? '?' : ms(p.eta * 1000))
 	].join(' '))
-}, 5 * 1000)
+}
 
-stations.once('end', () => clearInterval(progressInterval))
-stations.once('error', () => clearInterval(progressInterval))
+const progress = progressStream({objectMode: true})
+
+const progressInterval = setInterval(() => {
+	reportProgress(progress.progress())
+}, 5 * 1000)
+progress.once('end', () => clearInterval(progressInterval))
+progress.once('error', () => clearInterval(progressInterval))
+
+const stations = getStations(TOKEN, length => progress.setLength(length))
 
 const src = pipe(
 	stations,

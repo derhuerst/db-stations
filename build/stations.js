@@ -5,7 +5,6 @@
 const qs = require('querystring')
 const {fetch} = require('fetch-ponyfill')()
 const concurrentThrough = require('through2-concurrent')
-const progressStream = require('progress-stream')
 
 const estimateStationWeight = require('./estimate-station-weight')
 
@@ -54,25 +53,18 @@ const computeWeight = (s, _, cb) => {
 	})
 }
 
-const download = (token) => {
-	// todo
+const download = (token, setLength) => {
 	const weight = concurrentThrough.obj({maxConcurrency: 10}, computeWeight)
-	const progess = progressStream({objectMode: true})
 
 	request(token)
 	.then((data) => {
-		progess.setLength(data.result.length)
+		setLength(data.result.length)
 		for (let res of data.result) weight.write(res)
 		weight.end()
 	})
-	.catch((err) => {
-		weight.destroy(err)
-		progess.destroy(err)
-	})
+	.catch(err => weight.destroy(err))
 
-	weight.once('error', err => progess.destroy(err))
 	return weight
-	.pipe(progess)
 }
 
 module.exports = download
