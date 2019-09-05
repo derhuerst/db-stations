@@ -5,7 +5,7 @@ const slugg = require('slugg')
 const omit = require('lodash/omit')
 
 const parseLocation = require('./parse').location
-const parseRil100 = require('./parse').RIL100
+const parseRil100 = require('./parse').ril100
 const parseId = require('./parse').id
 
 const full = () => {

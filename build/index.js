@@ -32,7 +32,7 @@ const reportProgress = (p) => {
 		'–',
 		Math.round(p.speed) + '/s',
 		'–',
-		'ETA: ' + (Number.isNaN(p.eta) ? '?' : ms(p.eta * 1000))
+		'ETA: ' + (Number.isNaN(p.eta) || p.eta === Infinity ? '?' : ms(p.eta * 1000))
 	].join(' '))
 }
 
