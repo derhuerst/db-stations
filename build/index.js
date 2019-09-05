@@ -34,7 +34,7 @@ const progressInterval = setInterval(() => {
 		'–',
 		Math.round(p.speed) + '/s',
 		'–',
-		'ETA: ' + ms(p.eta * 1000)
+		'ETA: ' + (Number.isNaN(p.eta) ? '?' : ms(p.eta * 1000))
 	].join(' '))
 }, 5 * 1000)
 
