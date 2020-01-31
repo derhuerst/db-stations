@@ -5,6 +5,7 @@ const isStream = require('is-stream')
 const isRoughlyEqual = require('is-roughly-equal')
 
 const stations = require('.')
+const createFilter = require('./create-filter')
 
 
 
@@ -123,4 +124,21 @@ test('full.ndjson contains Berlin Jungfernheide', (t) => {
 			t.end()
 		}
 	})
+})
+
+test('createFilter works properly', (t) => {
+	const s = {
+		type: 'station',
+		id: 'foo',
+		name: 'Foo',
+		location: {latitude: 1.23, longitude: 2.34}
+	}
+
+	t.equal(createFilter({id: 'foo'})(s), true)
+	t.equal(createFilter({id: 'FOO'})(s), false)
+
+	t.equal(createFilter({latitude: 1.24})(s), false)
+	t.equal(createFilter({latitude: 1.24})(s), false)
+
+	t.end()
 })
