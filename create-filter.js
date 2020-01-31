@@ -22,13 +22,13 @@ const createFilter = (sel) => {
 				}
 			} else if (prop === 'latitude') {
 				if (
-					s.location && sel.location &&
-					s.location.latitude !== sel.location.latitude
+					s.location &&
+					s.location.latitude !== sel.latitude
 				) return false
 			} else if (prop === 'longitude') {
 				if (
-					s.location && sel.location &&
-					s.location.longitude !== sel.location.longitude
+					s.location &&
+					s.location.longitude !== sel.longitude
 				) return false
 			} else if (s[prop] !== sel[prop]) {
 				return false
