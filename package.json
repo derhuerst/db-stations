@@ -50,7 +50,7 @@
 		"stream-filter": "^2.1.0",
 		"stream-sink": "^2.1.0",
 		"tap-min": "^2.0.0",
-		"tape": "^4.6.3",
+		"tape": "^5.0.0",
 		"through2": "^3.0.0",
 		"through2-concurrent": "^2.0.0"
 	},
