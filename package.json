@@ -1,61 +1,65 @@
 {
-	"name": "db-stations",
-	"description": "A list of DB stations.",
-	"version": "3.0.0",
-	"main": "index.js",
-	"browser": "browser.js",
-	"files": [
-		"index.js",
-		"browser.js",
-		"create-filter.js",
-		"data.ndjson",
-		"full.ndjson",
-		"data.json",
-		"full.json"
-	],
-	"keywords": [
-		"db",
-		"deutsche bahn",
-		"german railway",
-		"public transport",
-		"stations",
-		"open data",
-		"json"
-	],
-	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/derhuerst/db-stations",
-	"repository": "derhuerst/db-stations",
-	"bugs": "https://github.com/derhuerst/db-stations/issues",
-	"license": "ISC",
-	"engines": {
-		"node": ">=8"
-	},
-	"dependencies": {
-		"ndjson": "^1.5.0",
-		"tokenize-db-station-name": "^2.2.1"
-	},
-	"devDependencies": {
-		"compute-db-station-weight": "^2.0.0",
-		"db-hafas": "^4.0.0",
-		"fetch-ponyfill": "^6.0.0",
-		"from2": "2.3.0",
-		"hafas-estimate-station-weight": "^2.0.0",
-		"is-roughly-equal": "^0.1.0",
-		"is-stream": "^2.0.0",
-		"lodash": "^4.7.14",
-		"ms": "^2.1.1",
-		"multipipe": "^3.0.0",
-		"progress-stream": "^2.0.0",
-		"slugg": "^1.2.0",
-		"stream-filter": "^2.1.0",
-		"stream-sink": "^2.1.0",
-		"tap-min": "^2.0.0",
-		"tape": "^4.6.3",
-		"through2": "^3.0.0",
-		"through2-concurrent": "^2.0.0"
-	},
-	"scripts": {
-		"build": "node build/index.js && node build/convert-to-browser.js",
-		"test": "node test.js | tap-min"
-	}
+  "name": "db-stations",
+  "description": "A list of DB stations.",
+  "version": "3.0.0",
+  "main": "index.js",
+  "browser": "browser.js",
+  "files": [
+    "index.js",
+    "browser.js",
+    "create-filter.js",
+    "data.ndjson",
+    "full.ndjson",
+    "data.json",
+    "full.json"
+  ],
+  "keywords": [
+    "db",
+    "deutsche bahn",
+    "german railway",
+    "public transport",
+    "stations",
+    "open data",
+    "json"
+  ],
+  "author": "Jannis R <mail@jannisr.de>",
+  "homepage": "https://github.com/derhuerst/db-stations",
+  "repository": "derhuerst/db-stations",
+  "bugs": "https://github.com/derhuerst/db-stations/issues",
+  "license": "ISC",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "ndjson": "^1.5.0",
+    "tokenize-db-station-name": "^2.2.1",
+    "snyk": "^1.319.0"
+  },
+  "devDependencies": {
+    "compute-db-station-weight": "^2.0.0",
+    "db-hafas": "^4.0.0",
+    "fetch-ponyfill": "^6.0.0",
+    "from2": "2.3.0",
+    "hafas-estimate-station-weight": "^2.0.0",
+    "is-roughly-equal": "^0.1.0",
+    "is-stream": "^2.0.0",
+    "lodash": "^4.7.14",
+    "ms": "^2.1.1",
+    "multipipe": "^3.0.0",
+    "progress-stream": "^2.0.0",
+    "slugg": "^1.2.0",
+    "stream-filter": "^2.1.0",
+    "stream-sink": "^2.1.0",
+    "tap-min": "^2.0.0",
+    "tape": "^4.6.3",
+    "through2": "^3.0.0",
+    "through2-concurrent": "^2.0.0"
+  },
+  "scripts": {
+    "build": "node build/index.js && node build/convert-to-browser.js",
+    "test": "node test.js | tap-min",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
