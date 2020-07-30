@@ -48,6 +48,7 @@ const stations = getStations(TOKEN, length => progress.setLength(length))
 
 const src = pump(
 	stations,
+	progress,
 	through.obj(function (s, _, cb) {
 		const id = s.evaNumbers[0] ? s.evaNumbers[0].number + '' : null
 		if (id) this.push(s)

@@ -2,6 +2,7 @@
 
 // curl -s --fail --header 'Accept: application/json' --header 'Authorization: Bearer '$API_TOKEN 'https://api.deutschebahn.com/stada/v2/stations' -o data.json
 
+const debug = require('debug')('db-stations:stations')
 const qs = require('querystring')
 const {fetch} = require('fetch-ponyfill')()
 const concurrentThrough = require('through2-concurrent')
@@ -10,7 +11,9 @@ const estimateStationWeight = require('./estimate-station-weight')
 
 const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
 
-const request = (token, offset, size) => {
+const request = (token) => {
+	debug('fetching stations')
+
 	const url = endpoint + '?' + qs.stringify({
 		offset: 0, limit: 100000
 	})
@@ -39,6 +42,7 @@ const computeWeight = (s, _, cb) => {
 	const id = s.evaNumbers[0] && s.evaNumbers[0].number
 	if ('number' !== typeof id) return cb(null, s)
 
+	debug(`estimating station weight for ${id}`)
 	estimateStationWeight(id + '', maxIterations)
 	.then(weight => {
 		if (weight === 0) console.error(id + '', s.name, weight0Msg)
