@@ -1,6 +1,6 @@
 'use strict'
 
-const pipe = require('multipipe')
+const pump = require('pump')
 const progressStream = require('progress-stream')
 const through = require('through2')
 const ndjson = require('ndjson')
@@ -46,7 +46,7 @@ progress.once('error', () => clearInterval(progressInterval))
 
 const stations = getStations(TOKEN, length => progress.setLength(length))
 
-const src = pipe(
+const src = pump(
 	stations,
 	through.obj(function (s, _, cb) {
 		const id = s.evaNumbers[0] ? s.evaNumbers[0].number + '' : null
@@ -57,7 +57,7 @@ const src = pipe(
 	showError
 )
 
-pipe(
+pump(
 	src,
 	parseSimplified(),
 	ndjson.stringify(),
@@ -65,7 +65,7 @@ pipe(
 	showError
 )
 
-pipe(
+pump(
 	src,
 	parseFull(),
 	ndjson.stringify(),
