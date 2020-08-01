@@ -24,7 +24,8 @@ const id = (data) => {
 }
 
 const ril100 = (data) => {
-	const id = data.ril100Identifiers.some(id => !!id.rilIdentifier)
+	const ids = data.ril100Identifiers.filter(id => !!id.rilIdentifier)
+	const id = ids.find(id => id.isMain) || ids[0]
 	return id && id.rilIdentifier || null
 }
 

@@ -4,6 +4,7 @@ const test = require('tape')
 const isStream = require('is-stream')
 const isRoughlyEqual = require('is-roughly-equal')
 
+const {ril100: parseRil100} = require('./build/parse')
 const stations = require('.')
 const createFilter = require('./create-filter')
 
@@ -61,6 +62,27 @@ const assertIsJungfernheide = (t, s) => {
 }
 
 
+
+test('parseRil100 works', (t) => {
+	const adelschlag = {
+		number: 12,
+		name: 'Adelschlag',
+		evaNumbers: [{
+			isMain: true,
+			number: 8000419,
+			geographicCoordinates: {latitude: 1.23, longitude: 2.34},
+		}],
+		ril100Identifiers: [{
+			isMain: true,
+			rilIdentifier: 'MAD',
+			hasSteamPermission: true,
+			geographicCoordinates: {latitude: 2.34, longitude: 1.23},
+		}],
+	}
+
+	t.equal(parseRil100(adelschlag), 'MAD')
+	t.end()
+})
 
 test('data.ndjson contains valid simplified stations', (t) => {
 	stations()
