@@ -30,14 +30,20 @@ const assertIsValidStation = (t, s) => {
 		t.ok(s.weight > 0)
 	}
 
-	t.ok(s.address)
-	if (s.address && s.address.street) {
-		t.equal(typeof s.address.street, 'string')
+	if (s.address) {
+		if (s.address.street) {
+			t.equal(typeof s.address.street, 'string')
+			t.ok(s.address.street)
+		}
+		if (s.address.zipcode) {
+			t.equal(typeof s.address.zipcode, 'string')
+			t.ok(s.address.zipcode)
+		}
+		if (s.address.city) {
+			t.equal(typeof s.address.city, 'string')
+			t.ok(s.address.city)
+		}
 	}
-	t.equal(typeof s.address.zipcode, 'string')
-	t.ok(s.address.zipcode)
-	t.equal(typeof s.address.city, 'string')
-	t.ok(s.address.city)
 
 	if (s.location !== null) {
 		t.equal(s.location.type, 'location')
@@ -49,7 +55,7 @@ const assertIsValidStation = (t, s) => {
 }
 
 const assertIsJungfernheide = (t, s) => {
-	t.equal(s.id, '8089100')
+	t.ok(s.id === '8089100' || s.id === '8011167', 'id is 8089100 or 8011167')
 	t.equal(s.nr, 3067)
 	t.ok(s.ril100 === 'BJUF' || s.ril100 === 'BJUN') // WAT
 	t.equal(s.name, 'Jungfernheide')
@@ -99,7 +105,7 @@ test('data.ndjson contains Berlin Jungfernheide', (t) => {
 	stations()
 	.on('error', t.ifError)
 	.on('data', (s) => {
-		if (s.id === '8089100') {
+		if (s.id === '8089100' || s.id === '8011167') {
 			assertIsJungfernheide(t, s)
 			t.end()
 		}
@@ -141,7 +147,7 @@ test('full.ndjson contains Berlin Jungfernheide', (t) => {
 	stations.full()
 	.on('error', t.ifError)
 	.on('data', (s) => {
-		if (s.id === '8089100') {
+		if (s.id === '8089100' || s.id === '8011167') {
 			assertIsJungfernheide(t, s)
 			t.end()
 		}
