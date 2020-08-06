@@ -10,47 +10,46 @@ const createFilter = require('./create-filter')
 
 
 
-const assertIsValidStation = (t, s) => {
-	t.equal(s.type, 'station')
-	t.equal(typeof s.id, 'string')
-	t.ok(s.id)
+const assertIsValidStation = (t, s, row) => {
+	t.equal(s.type, 'station', `row ${row}: s.type`)
+	t.equal(typeof s.id, 'string', `row ${row}: s.id`)
+	t.ok(s.id, `row ${row}: s.id`)
 
-	if (s.nr !== null) t.equal(typeof s.nr, 'number')
+	if (s.nr !== null) t.equal(typeof s.nr, 'number', `row ${row}: s.nr`)
 	if (s.ril100 !== null) {
-		t.equal(typeof s.ril100, 'string')
-		t.ok(s.ril100)
+		t.equal(typeof s.ril100, 'string', `row ${row}: s.ril100`)
+		t.ok(s.ril100, `row ${row}: s.ril100`)
 	}
 
-	t.equal(typeof s.name, 'string')
-	t.ok(s.name)
+	t.equal(typeof s.name, 'string', `row ${row}: s.name`)
+	t.ok(s.name, `row ${row}: s.name`)
 
 	if (s.weight !== undefined && s.weight !== null) {
-		t.equal(typeof s.weight, 'number')
-		if (!(s.weight > 0)) console.error(s)
-		t.ok(s.weight > 0)
+		t.equal(typeof s.weight, 'number', `row ${row}: s.weight`)
+		t.ok(s.weight > 0, `row ${row}: s.weight`)
 	}
 
 	if (s.address) {
 		if (s.address.street) {
-			t.equal(typeof s.address.street, 'string')
-			t.ok(s.address.street)
+			t.equal(typeof s.address.street, 'string', `row ${row}: s.address.street`)
+			t.ok(s.address.street, `row ${row}: s.address.street`)
 		}
 		if (s.address.zipcode) {
-			t.equal(typeof s.address.zipcode, 'string')
-			t.ok(s.address.zipcode)
+			t.equal(typeof s.address.zipcode, 'string', `row ${row}: s.address.zipcode`)
+			t.ok(s.address.zipcode, `row ${row}: s.address.zipcode`)
 		}
 		if (s.address.city) {
-			t.equal(typeof s.address.city, 'string')
-			t.ok(s.address.city)
+			t.equal(typeof s.address.city, 'string', `row ${row}: s.address.city`)
+			t.ok(s.address.city, `row ${row}: s.address.city`)
 		}
 	}
 
 	if (s.location !== null) {
-		t.equal(s.location.type, 'location')
-		t.equal(typeof s.location.latitude, 'number')
-		t.ok(isRoughlyEqual(5, s.location.latitude, 51))
-		t.equal(typeof s.location.longitude, 'number')
-		t.ok(isRoughlyEqual(5, s.location.longitude, 10))
+		t.equal(s.location.type, 'location', `row ${row}: s.location.type`)
+		t.equal(typeof s.location.latitude, 'number', `row ${row}: s.location.latitude`)
+		t.ok(isRoughlyEqual(5, s.location.latitude, 51), `row ${row}: s.location.latitude`)
+		t.equal(typeof s.location.longitude, 'number', `row ${row}: s.location.longitude`)
+		t.ok(isRoughlyEqual(5, s.location.longitude, 10), `row ${row}: s.location.longitude`)
 	}
 }
 
@@ -91,10 +90,11 @@ test('parseRil100 works', (t) => {
 })
 
 test('data.ndjson contains valid simplified stations', (t) => {
+	let row = 0
 	stations()
 	.on('error', t.ifError)
 	.on('data', (s) => {
-		assertIsValidStation(t, s)
+		assertIsValidStation(t, s, ++row)
 	})
 	.on('end', () => {
 		t.end()
