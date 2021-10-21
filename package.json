@@ -31,18 +31,18 @@
 		"node": ">=12"
 	},
 	"dependencies": {
-		"ndjson": "^1.5.0",
-		"tokenize-db-station-name": "^2.2.1"
+		"ndjson": "^2.0.0",
+		"tokenize-db-station-name": "^3.0.0"
 	},
 	"devDependencies": {
-		"compute-db-station-weight": "^2.0.0",
+		"compute-db-station-weight": "^3.0.0",
 		"db-hafas": "^5.0.2",
 		"debug": "^4.1.1",
-		"fetch-ponyfill": "^6.0.0",
+		"fetch-ponyfill": "^7.1.0",
 		"from2": "2.3.0",
-		"hafas-estimate-station-weight": "^2.0.0",
+		"hafas-estimate-station-weight": "^3.0.0",
 		"is-roughly-equal": "^0.1.0",
-		"is-stream": "^2.0.0",
+		"is-stream": "^2.0.1",
 		"lodash": "^4.7.14",
 		"ms": "^2.1.1",
 		"progress-stream": "^2.0.0",
