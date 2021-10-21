@@ -38,6 +38,7 @@
 		"compute-db-station-weight": "^3.0.0",
 		"db-hafas": "^5.0.2",
 		"debug": "^4.1.1",
+		"eslint": "^8.0.1",
 		"fetch-ponyfill": "^7.1.0",
 		"from2": "2.3.0",
 		"hafas-estimate-station-weight": "^3.0.0",
@@ -56,7 +57,9 @@
 		"through2-concurrent": "^2.0.0"
 	},
 	"scripts": {
+		"lint": "eslint .",
 		"build": "node build/index.js && node build/convert-to-browser.js",
-		"test": "node test.js | tap-min"
+		"test": "node test.js | tap-min",
+		"prepublishOnly": "npm run lint && npm test"
 	}
 }
