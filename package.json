@@ -1,7 +1,7 @@
 {
 	"name": "db-stations",
 	"description": "A list of DB stations.",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"main": "index.js",
 	"browser": "browser.js",
 	"files": [
@@ -36,11 +36,11 @@
 	},
 	"devDependencies": {
 		"compute-db-station-weight": "^3.0.0",
-		"db-hafas": "^5.0.2",
 		"debug": "^4.1.1",
 		"eslint": "^8.0.1",
 		"fetch-ponyfill": "^7.1.0",
 		"from2": "2.3.0",
+		"hafas-client": "^5.20.0",
 		"hafas-estimate-station-weight": "^3.0.0",
 		"is-roughly-equal": "^0.1.0",
 		"is-stream": "^2.0.1",
