@@ -1,7 +1,7 @@
 {
 	"name": "db-stations",
 	"description": "A list of DB stations.",
-	"version": "4.1.0",
+	"version": "4.2.0",
 	"main": "index.js",
 	"browser": "browser.js",
 	"files": [
@@ -18,9 +18,9 @@
 		"deutsche bahn",
 		"german railway",
 		"public transport",
+		"transit",
 		"stations",
-		"open data",
-		"json"
+		"open data"
 	],
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/db-stations",
