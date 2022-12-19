@@ -9,9 +9,9 @@ const concurrentThrough = require('through2-concurrent')
 
 const estimateStationWeight = require('./estimate-station-weight')
 
-const endpoint = 'https://api.deutschebahn.com/stada/v2/stations'
+const endpoint = 'https://apis.deutschebahn.com/db-api-marketplace/apis/station-data/v2/stations'
 
-const request = (token) => {
+const request = (clientId, clientSecret) => {
 	debug('fetching stations')
 
 	const url = endpoint + '?' + qs.stringify({
@@ -19,7 +19,8 @@ const request = (token) => {
 	})
 	return fetch(url, {
 		headers: {
-			authorization: 'Bearer ' + token,
+			'DB-Client-Id': clientId,
+			'DB-Api-Key': clientSecret,
 			accept: 'application/json'
 		},
 		cache: 'no-store'
@@ -57,10 +58,10 @@ const computeWeight = (s, _, cb) => {
 	})
 }
 
-const download = (token, setLength) => {
+const download = (clientId, clientSecret, setLength) => {
 	const weight = concurrentThrough.obj({maxConcurrency: 10}, computeWeight)
 
-	request(token)
+	request(clientId, clientSecret)
 	.then((data) => {
 		setLength(data.result.length)
 		for (let res of data.result) weight.write(res)

@@ -12,9 +12,14 @@ const getStations = require('./stations')
 const parseFull = require('./parse-full')
 const parseSimplified = require('./parse-simplified')
 
-const TOKEN = process.env.API_TOKEN
-if (!TOKEN) {
-	process.stderr.write('missing API_TOKEN\n')
+const CLIENT_ID = process.env.DB_STADA_CLIENT_ID
+if (!CLIENT_ID) {
+	process.stderr.write('missing DB_STADA_CLIENT_ID\n')
+	process.exit(1)
+}
+const CLIENT_SECRET = process.env.DB_STADA_CLIENT_SECRET
+if (!CLIENT_SECRET) {
+	process.stderr.write('missing DB_STADA_CLIENT_ID\n')
 	process.exit(1)
 }
 
@@ -44,7 +49,7 @@ const progressInterval = setInterval(() => {
 progress.once('end', () => clearInterval(progressInterval))
 progress.once('error', () => clearInterval(progressInterval))
 
-const stations = getStations(TOKEN, length => progress.setLength(length))
+const stations = getStations(CLIENT_ID, CLIENT_SECRET, length => progress.setLength(length))
 
 const src = pump(
 	stations,
