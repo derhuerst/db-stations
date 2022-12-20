@@ -1,8 +1,8 @@
-import withThrottling from 'hafas-client/throttle.js'
-import dbProfile from 'hafas-client/p/db/index.js'
-import withRetrying from 'hafas-client/retry.js'
-import createHafasClient from 'hafas-client'
-import createEstimate from 'hafas-estimate-station-weight'
+import {withThrottling} from 'hafas-client/throttle.js'
+import {profile as dbProfile} from 'hafas-client/p/db/index.js'
+import {withRetrying} from 'hafas-client/retry.js'
+import {createClient as createHafasClient} from 'hafas-client'
+import {createEstimate} from 'hafas-estimate-station-weight'
 
 import weights from 'compute-db-station-weight/lib/weights.js'
 

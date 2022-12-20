@@ -1,5 +1,5 @@
 import test from 'tape'
-import isStream from 'is-stream'
+import {isStream} from 'is-stream'
 import isRoughlyEqual from 'is-roughly-equal'
 
 import {parseRil100} from './build/parse.js'
