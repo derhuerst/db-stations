@@ -1,11 +1,12 @@
-'use strict'
+import createDebug from 'debug'
+import qs from 'querystring'
+import createFetch from 'fetch-ponyfill'
+import concurrentThrough from 'through2-concurrent'
 
-const debug = require('debug')('db-stations:stations')
-const qs = require('querystring')
-const {fetch} = require('fetch-ponyfill')()
-const concurrentThrough = require('through2-concurrent')
+import {estimateStationWeight} from './estimate-station-weight.js'
 
-const estimateStationWeight = require('./estimate-station-weight')
+const {fetch} = createFetch()
+const debug = createDebug('db-stations:stations')
 
 const endpoint = 'https://apis.deutschebahn.com/db-api-marketplace/apis/station-data/v2/stations'
 
@@ -56,7 +57,7 @@ const computeWeight = (s, _, cb) => {
 	})
 }
 
-const download = (clientId, clientSecret, setLength) => {
+const downloadAndWeightStations = (clientId, clientSecret, setLength) => {
 	const weight = concurrentThrough.obj({maxConcurrency: 10}, computeWeight)
 
 	request(clientId, clientSecret)
@@ -70,4 +71,6 @@ const download = (clientId, clientSecret, setLength) => {
 	return weight
 }
 
-module.exports = download
+export {
+	downloadAndWeightStations,
+}

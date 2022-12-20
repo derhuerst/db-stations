@@ -1,4 +1,9 @@
-const {Readable} = require('stream')
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
+import {Readable} from 'node:stream'
 
 const stationsData = require('./data.json')
 const fullData = require('./full.json')
@@ -18,12 +23,14 @@ const arrayAsReadable = (arr) => {
 	})
 }
 
-const stations = () => {
+const readStations = () => {
 	return arrayAsReadable(stationsData)
 }
-const full = () => {
+const readFullStations = () => {
 	return arrayAsReadable(fullData)
 }
-stations.full = full
 
-module.exports = stations
+export {
+	readStations,
+	readFullStations,
+}

@@ -1,17 +1,19 @@
-'use strict'
+import {dirname} from 'node:path'
+import {fileURLToPath} from 'node:url'
+import {createReadStream, writeFile} from 'node:fs'
+import path from 'node:path'
+import ndjson from 'ndjson'
+import sink from 'stream-sink'
 
-const fs = require('fs')
-const path = require('path')
-const ndjson = require('ndjson')
-const sink = require('stream-sink')
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const ndjsonToJSON = (src, dest) => {
-	return fs.createReadStream(src)
+	return createReadStream(src)
 	.pipe(ndjson.parse())
 	.pipe(sink.object())
 	.then((data) => new Promise((resolve, reject) => {
 		data = JSON.stringify(data)
-		fs.writeFile(dest, data, (err) => {
+		writeFile(dest, data, (err) => {
 			if (err) reject(err)
 			else resolve()
 		})

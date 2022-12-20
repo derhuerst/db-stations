@@ -2,6 +2,7 @@
 	"name": "db-stations",
 	"description": "A list of DB stations.",
 	"version": "4.2.1",
+	"type": "module",
 	"main": "index.js",
 	"browser": "browser.js",
 	"files": [
@@ -28,7 +29,7 @@
 	"bugs": "https://github.com/derhuerst/db-stations/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=12"
+		"node": ">=18"
 	},
 	"dependencies": {
 		"ndjson": "^2.0.0",

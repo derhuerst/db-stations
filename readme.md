@@ -22,14 +22,14 @@ npm install db-stations
 
 ## Usage
 
-`stations()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
+`readStations()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects.
 
 ```js
-const stations = require('db-stations')
+import {readStations} from 'db-stations'
 
-stations()
-.on('data', console.log)
-.on('error', console.error)
+for await (const station of readStations()) {
+	console.log(station)
+}
 ```
 
 ```js
@@ -61,12 +61,14 @@ stations()
 
 ---
 
-`stations.full()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects with more information.
+`readFullStations()` returns a [readable stream](https://nodejs.org/api/stream.html#stream_class_stream_readable) in [object mode](https://nodejs.org/api/stream.html#stream_object_mode), emitting [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format) `station` objects with more information.
 
 ```js
-stations.full()
-.on('data', console.log)
-.on('error', console.error)
+import {readFullStations} from 'db-stations'
+
+for await (const station of readFullStations()) {
+	console.log(station)
+}
 ```
 
 ```js

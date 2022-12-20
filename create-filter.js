@@ -1,6 +1,4 @@
-'use strict'
-
-const tokenize = require('tokenize-db-station-name')
+import tokenize from 'tokenize-db-station-name'
 
 const createFilter = (sel) => {
 	if (sel === 'all') return () => true
@@ -40,4 +38,6 @@ const createFilter = (sel) => {
 	return filter
 }
 
-module.exports = createFilter
+export {
+	createFilter,
+}

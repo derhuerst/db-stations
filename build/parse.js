@@ -1,5 +1,3 @@
-'use strict'
-
 const location = (data) => {
 	if (
 		data.evaNumbers &&
@@ -29,4 +27,8 @@ const ril100 = (data) => {
 	return id && id.rilIdentifier || null
 }
 
-module.exports = {location, id, ril100}
+export {
+	location as parseLocation,
+	id as parseId,
+	ril100 as parseRil100,
+}

@@ -1,14 +1,13 @@
-'use strict'
+import test from 'tape'
+import isStream from 'is-stream'
+import isRoughlyEqual from 'is-roughly-equal'
 
-const test = require('tape')
-const isStream = require('is-stream')
-const isRoughlyEqual = require('is-roughly-equal')
-
-const {ril100: parseRil100} = require('./build/parse')
-const stations = require('.')
-const createFilter = require('./create-filter')
-
-
+import {parseRil100} from './build/parse.js'
+import {
+	readStations as stations,
+	readFullStations as fullStations,
+} from './index.js'
+import {createFilter} from './create-filter.js'
 
 const assertIsValidStation = (t, s, row) => {
 	t.equal(s.type, 'station', `row ${row}: s.type`)
@@ -113,7 +112,7 @@ test('data.ndjson contains Berlin Jungfernheide', (t) => {
 })
 
 test('full.ndjson contains valid full stations', (t) => {
-	stations.full()
+	fullStations()
 	.on('error', t.ifError)
 	.on('data', (s) => {
 		assertIsValidStation(t, s)
@@ -144,7 +143,7 @@ test('full.ndjson contains valid full stations', (t) => {
 })
 
 test('full.ndjson contains Berlin Jungfernheide', (t) => {
-	stations.full()
+	fullStations()
 	.on('error', t.ifError)
 	.on('data', (s) => {
 		if (s.id === '8089100' || s.id === '8011167') {

@@ -1,16 +1,17 @@
-'use strict'
+import {dirname, join as pathJoin} from 'node:path'
+import {fileURLToPath} from 'node:url'
+import pump from 'pump'
+import progressStream from 'progress-stream'
+import through from 'through2'
+import ndjson from 'ndjson'
+import fs from 'node:fs'
+import ms from 'ms'
 
-const pump = require('pump')
-const progressStream = require('progress-stream')
-const through = require('through2')
-const ndjson = require('ndjson')
-const fs = require('fs')
-const path = require('path')
-const ms = require('ms')
+import {downloadAndWeightStations as getStations} from './stations.js'
+import {fullParser as parseFull} from './parse-full.js'
+import {simplifiedParser as parseSimplified} from './parse-simplified.js'
 
-const getStations = require('./stations')
-const parseFull = require('./parse-full')
-const parseSimplified = require('./parse-simplified')
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const CLIENT_ID = process.env.DB_STADA_CLIENT_ID
 if (!CLIENT_ID) {
@@ -67,7 +68,7 @@ pump(
 	src,
 	parseSimplified(),
 	ndjson.stringify(),
-	fs.createWriteStream(path.join(__dirname, '../data.ndjson')),
+	fs.createWriteStream(pathJoin(__dirname, '../data.ndjson')),
 	showError
 )
 
@@ -75,6 +76,6 @@ pump(
 	src,
 	parseFull(),
 	ndjson.stringify(),
-	fs.createWriteStream(path.join(__dirname, '../full.ndjson')),
+	fs.createWriteStream(pathJoin(__dirname, '../full.ndjson')),
 	showError
 )

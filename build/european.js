@@ -1,12 +1,10 @@
-'use strict'
-
-const pump = require('pump')
-const fs = require('fs')
-const path = require('path')
-const csv = require('csv-parser')
-const map = require('through2-map')
-const filter = require('stream-filter')
-const reduce = require('through2-reduce')
+import pump from 'pump'
+import fs from 'node:fs'
+import path from 'node:path'
+import csv from 'csv-parser'
+import map from 'through2-map'
+import filter from 'stream-filter'
+import reduce from 'through2-reduce'
 
 const cleanKeys = () => {
 	// todo
@@ -21,7 +19,7 @@ const collect = (all, station) => {
 	return all
 }
 
-module.exports = pump(
+const pBuild = pump(
 	fs.createReadStream(path.join(__dirname, 'european.csv'))
 	, csv({separator: ';'})
 	, map.obj(cleanKeys)
@@ -29,3 +27,7 @@ module.exports = pump(
 	, filter(hasDbId, {objectMode: true})
 	, reduce.obj(collect, {})
 )
+
+export {
+	pBuild,
+}

@@ -1,13 +1,9 @@
-'use strict'
+import through from 'through2'
+import slugg from 'slugg'
 
-const through = require('through2')
-const slugg = require('slugg')
+import {parseLocation, parseRil100, parseId} from './parse.js'
 
-const parseLocation = require('./parse').location
-const parseRil100 = require('./parse').ril100
-const parseId = require('./parse').id
-
-const simplified = () => {
+const createSimplifiedParser = () => {
 	return through.obj((data, _, cb) => {
 		cb(null, {
 			type: 'station',
@@ -28,4 +24,6 @@ const simplified = () => {
 	})
 }
 
-module.exports = simplified
+export {
+	createSimplifiedParser as simplifiedParser,
+}

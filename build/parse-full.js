@@ -1,14 +1,10 @@
-'use strict'
+import through from 'through2'
+import slugg from 'slugg'
+import omit from 'lodash/omit.js'
 
-const through = require('through2')
-const slugg = require('slugg')
-const omit = require('lodash/omit')
+import {parseLocation, parseRil100, parseId} from './parse.js'
 
-const parseLocation = require('./parse').location
-const parseRil100 = require('./parse').ril100
-const parseId = require('./parse').id
-
-const full = () => {
+const createFullParser = () => {
 	return through.obj((data, _, cb) => {
 		const id = parseId(data)
 		const additionalIds = data.evaNumbers
@@ -41,4 +37,6 @@ const full = () => {
 	})
 }
 
-module.exports = full
+export {
+	createFullParser as fullParser,
+}

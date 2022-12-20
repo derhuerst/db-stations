@@ -1,19 +1,26 @@
-'use strict'
+import {dirname, join as pathJoin} from 'node:path'
+import {fileURLToPath} from 'node:url'
+import {createReadStream} from 'node:fs'
+import ndjson from 'ndjson'
 
-const fs = require('fs')
-const ndjson = require('ndjson')
-const path = require('path')
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const read = (file) => {
-	const raw = fs.createReadStream(file)
+	const raw = createReadStream(file)
 	const parser = ndjson.parse()
 	raw.pipe(parser)
 	raw.on('error', (err) => parser.emit('error', err))
 	return parser
 }
 
-const stations = () => read(path.join(__dirname, 'data.ndjson'))
-const full = () => read(path.join(__dirname, 'full.ndjson'))
-stations.full = full
+const readStations = () => {
+	return read(pathJoin(__dirname, 'data.ndjson'))
+}
+const readFullStations = () => {
+	return read(pathJoin(__dirname, 'full.ndjson'))
+}
 
-module.exports = stations
+export {
+	readStations,
+	readFullStations,
+}
