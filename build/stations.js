@@ -1,7 +1,5 @@
 'use strict'
 
-// curl -s --fail --header 'Accept: application/json' --header 'Authorization: Bearer '$API_TOKEN 'https://api.deutschebahn.com/stada/v2/stations' -o data.json
-
 const debug = require('debug')('db-stations:stations')
 const qs = require('querystring')
 const {fetch} = require('fetch-ponyfill')()
