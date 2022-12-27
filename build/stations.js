@@ -34,7 +34,7 @@ const request = (clientId, clientSecret) => {
 	})
 }
 
-const maxIterations = 30
+const maxIterations = 50
 const weight0Msg = `\
 has a weight of 0. Probably there are no departures here.`
 
@@ -42,11 +42,13 @@ const computeWeight = (s, _, cb) => {
 	const id = s.evaNumbers[0] && s.evaNumbers[0].number
 	if ('number' !== typeof id) return cb(null, s)
 
-	debug(`estimating station weight for ${id}`)
 	estimateStationWeight(id + '', maxIterations)
 	.then(weight => {
 		if (weight === 0) console.error(id + '', s.name, weight0Msg)
-		else s.weight = weight
+		else {
+			debug(`estimated weight ${weight} for ${id}`)
+			s.weight = weight
+		}
 		cb(null, s)
 	})
 	.catch((err) => {

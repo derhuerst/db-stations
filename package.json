@@ -1,7 +1,7 @@
 {
 	"name": "db-stations",
 	"description": "A list of DB stations.",
-	"version": "5.0.1",
+	"version": "5.0.2",
 	"type": "module",
 	"main": "index.js",
 	"browser": "browser.js",
