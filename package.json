@@ -1,7 +1,7 @@
 {
 	"name": "db-stations",
 	"description": "A list of DB stations.",
-	"version": "5.0.0",
+	"version": "5.0.1",
 	"type": "module",
 	"main": "index.js",
 	"browser": "browser.js",
@@ -36,7 +36,7 @@
 		"tokenize-db-station-name": "^3.0.0"
 	},
 	"devDependencies": {
-		"compute-db-station-weight": "^3.0.0",
+		"compute-db-station-weight": "^4.0.0",
 		"debug": "^4.1.1",
 		"eslint": "^8.0.1",
 		"fetch-ponyfill": "^7.1.0",
